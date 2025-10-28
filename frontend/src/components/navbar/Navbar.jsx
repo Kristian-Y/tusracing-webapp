@@ -6,7 +6,6 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Formula Student", href: "/formula-student" },
     { name: "Gallery", href: "/gallery" },
@@ -36,13 +35,12 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between ">
         {/* Logo */}
-        <a
-          href="/"
-          className={`text-2xl font-bold tracking-wide transition-transform duration-300 ${theme === "lightTheme" ? "text-blue-600" : "text-white"
-            }`}
-        >
-          FST Team
-        </a>
+        <img
+            src="images/icons/logo/logo-tus-white.svg"
+            alt="FST Racing Logo"
+            className="w-[120px] object-contain cursor-pointer"
+            onClick={() => (window.location.href = "/")}
+          />
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">

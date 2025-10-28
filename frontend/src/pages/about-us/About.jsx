@@ -21,7 +21,7 @@ const About = () => {
         {/* Our Race Cars */}
         <AnimatedSection direction="up" delay={200}>
           {/* FIX: Added h-full to make the card stretch to the height of the tallest card in the row */}
-          <div className="card h-full bg-base-300/30 shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div className="card h-full bg-base-300/30 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xlhover:ring-2">
             <figure className="relative">
               <img
                 src="/images/cars/car-on-track.jpg"
@@ -49,7 +49,7 @@ const About = () => {
         {/* Our Team */}
         <AnimatedSection direction="up" delay={300}>
           {/* FIX: Added h-full */}
-          <div className="card h-full bg-base-300/30 shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div className="card h-full bg-base-300/30 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xlhover:ring-2">
             <figure className="relative">
               <img
                 src="/images/team/team-photo.jpg"
@@ -78,7 +78,7 @@ const About = () => {
         {/* Our History */}
         <AnimatedSection direction="up" delay={400}>
           {/* FIX: Added h-full */}
-          <div className="card h-full bg-base-300/30 shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div className="card h-full bg-base-300/30 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xlhover:ring-2">
             <figure className="relative">
               <img
                 src="/images/cars/car-testing.jpg"
@@ -107,7 +107,7 @@ const About = () => {
         {/* Your Application */}
         <AnimatedSection direction="up" delay={500}>
           {/* FIX: Added h-full */}
-          <div className="card h-full bg-base-300/30 shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div className="card h-full bg-base-300/30 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xlhover:ring-2">
             <figure className="relative">
               <img
                 src="/images/cars/join-team.jpg"

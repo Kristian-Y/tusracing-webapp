@@ -34,7 +34,7 @@ const Navbar = () => {
         ${theme === "darkTheme" ? "bg-blue-600/30" : "bg-white/90"}
       `}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between ">
         {/* Logo */}
         <a
           href="/"

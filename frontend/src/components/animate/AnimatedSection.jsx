@@ -17,15 +17,15 @@ const AnimatedSection = ({ children, delay = 0, direction = "up" }) => {
   return (
     <section
       ref={ref}
-      className={`transition-transform duration-1000 ease-in-out transform ${
-        inView
+      className={`transition-transform duration-1000 ease-in-out transform ${inView
           ? "opacity-100 translate-x-0 translate-y-0 scale-100 rotate-0"
           : `opacity-0 ${translateClass[direction]} scale-95 rotate-1`
-      }`}
+        }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
     </section>
+
   );
 };
 

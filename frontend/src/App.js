@@ -16,15 +16,16 @@ const App = () => {
     <ThemeProvider>
       <Router>
         <Navbar />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contacts />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-
+        <div className="pt-16"> 
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contacts />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+        
         <GoUpButton />
         <Footer />
       </Router>

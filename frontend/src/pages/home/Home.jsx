@@ -76,7 +76,7 @@ const Home = () => {
             </AnimatedSection>
             <AnimatedSection delay={200} direction="right">
               <p className="mt-4 text-lg md:text-2xl">
-                Engineering Excellence on Wheels
+                Engineering Excellence on Wheels!
               </p>
             </AnimatedSection>
           </div>

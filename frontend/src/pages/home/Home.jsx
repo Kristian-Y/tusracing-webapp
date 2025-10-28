@@ -4,7 +4,7 @@ import { useTheme } from "../../theme-manager/ThemeContext";
 
 const Home = () => {
 
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   const services = [
     {

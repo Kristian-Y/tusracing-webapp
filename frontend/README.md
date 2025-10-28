@@ -109,6 +109,7 @@ frontend/
 |  |  ├─ animate/    # Animation utility
 |  |  ├─ footer/     # Footer
 |  |  ├─ navbar/     # Navbar
+|  |  ├─ up-button/  # Go up button
 |  |  └─ toaster/    # Custom notifications popup
 │  ├─ pages/         # Page components
 |  ├─ context/       # Theme supplier

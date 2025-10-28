@@ -2,7 +2,7 @@ import { useTheme } from "../../theme-manager/ThemeContext";
 const About = () => {
   const { theme } = useTheme();
   return (
-    <div className="min-h-screen bg-neutral text-neutral-content flex flex-col items-center justify-center px-4 py-10">
+    <div className="mt-14 min-h-screen bg-neutral text-neutral-content flex flex-col items-center justify-center px-4 py-10">
       <h2 className="text-center text-lg mb-10">
         Here you can find out everything about us: our cars, our sub-teams and
         our milestones. Just click through!

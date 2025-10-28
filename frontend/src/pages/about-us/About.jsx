@@ -27,7 +27,11 @@ const About = () => {
           </figure>
           <div className="card-body">
             <h2 className="card-title font-bold text-2xl">Our Race Cars</h2>
-            <hr />
+            <hr
+              className={`my-2 h-[2px] border-0 ${
+                theme === "darkTheme" ? "bg-white" : "bg-black"
+              }`}
+            />
             <p>
               Our race cars are the result of cutting-edge engineering and
               meticulous design. Each car is built to perform at the highest
@@ -54,7 +58,11 @@ const About = () => {
           </figure>
           <div className="card-body">
             <h2 className="card-title font-bold text-2xl ">Our Team</h2>
-            <hr />
+           <hr
+              className={`my-2 h-[2px] border-0 ${
+                theme === "darkTheme" ? "bg-white" : "bg-black"
+              }`}
+            />
             <p>
               Our team is made up of passionate individuals dedicated to
               excellence in engineering and motorsport. Together, we combine
@@ -82,7 +90,11 @@ const About = () => {
           </figure>
           <div className="card-body">
             <h2 className="card-title font-bold text-2xl ">Our History</h2>
-            <hr />
+           <hr
+              className={`my-2 h-[2px] border-0 ${
+                theme === "darkTheme" ? "bg-white" : "bg-black"
+              }`}
+            />
             <p>
               Our team began with a shared passion for motorsport and
               innovation. Over the years, we’ve grown into a respected force in
@@ -110,7 +122,11 @@ const About = () => {
           </figure>
           <div className="card-body">
             <h2 className="card-title font-bold text-2xl">Your Application</h2>
-            <hr />
+            <hr
+              className={`my-2 h-[2px] border-0 ${
+                theme === "darkTheme" ? "bg-white" : "bg-black"
+              }`}
+            />
             <p>
               Apply now to join our Formula Student team and showcase your
               engineering skills. Be part of a dynamic project that combines

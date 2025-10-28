@@ -1,7 +1,7 @@
 // src/App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "./context/ThemeContext";
+import { ThemeProvider } from "./theme-manager/ThemeContext";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home.jsx";
 import About from "./pages/about-us/About.jsx";

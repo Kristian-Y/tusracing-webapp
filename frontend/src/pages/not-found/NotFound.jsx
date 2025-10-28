@@ -1,7 +1,6 @@
 import { FaArrowRight } from "react-icons/fa";
-import React from "react";
 import AnimatedSection from "../../components/animate/AnimatedSection";
-import { useTheme } from "../../context/ThemeContext"; // adjust path
+import { useTheme } from "../../theme-manager/ThemeContext"; 
 
 const NotFound = () => {
   const { theme } = useTheme(); // subscribe to theme changes

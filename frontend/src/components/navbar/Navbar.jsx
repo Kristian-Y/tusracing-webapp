@@ -48,10 +48,10 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           <ul className="flex gap-8 items-center">
             {navItems.map((item) => (
-              <li key={item.name}>
+              <li key={item.name} className="active:scale-90 duration-300">
                 <a
                   href={item.href}
-                  className="relative group font-medium text-base-content transition-colors duration-300 hover:text-primary"
+                  className="relative group font-medium text-base-content transition-all hover:text-accent"
                 >
                   <span>{item.name}</span>
                   <span className="absolute left-0 -bottom-1 block w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -192,7 +192,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-    </nav>
+    </nav >
   );
 };
 

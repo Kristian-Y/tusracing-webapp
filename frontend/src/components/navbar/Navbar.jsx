@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../theme-manager/ThemeContext";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
@@ -8,8 +8,9 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Contact", href: "/contact" },
+    { name: "Formula Student", href: "/formula-student" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Sponsors", href: "/sponsors" },
   ];
 
   // Auto close menu when resizing to desktop

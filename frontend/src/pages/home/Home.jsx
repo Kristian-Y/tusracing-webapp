@@ -140,7 +140,7 @@ const Home = () => {
 
 
       {/* Stats Bar */}
-      <div className="bg-primary text-primary-content py-8">
+      <div className="bg-gradient-to-r from-primary to-accent text-primary-content py-8">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[

@@ -1,5 +1,4 @@
-import { FaArrowRight, FaTools, FaSearch, FaFlagCheckered, FaHome, FaTachometerAlt } from "react-icons/fa";
-import { BsSpeedometer2 } from "react-icons/bs";
+import { FaArrowRight, FaHome, FaTachometerAlt, FaSearch } from "react-icons/fa";
 import AnimatedSection from "../../components/animate/AnimatedSection";
 import { useTheme } from "../../theme-manager/ThemeContext";
 import { useState, useEffect } from "react";
@@ -8,7 +7,6 @@ const NotFound = () => {
   const { theme } = useTheme();
   const [speed, setSpeed] = useState(0);
   const [factIndex, setFactIndex] = useState(0);
-  const [isFactChanging, setIsFactChanging] = useState(false);
 
   const f1Facts = [
     "F1 cars can accelerate from 0 to 100 mph in just 2.5 seconds",
@@ -33,50 +31,54 @@ const NotFound = () => {
     "F1 tires are designed to last only about 100 miles before needing replacement"
   ];
 
+  // Speed interval
   useEffect(() => {
     const interval = setInterval(() => {
-      setSpeed(prev => (prev >= 300 ? 0 : prev + 50));
-    }, 700);
+      setSpeed(prev => {
+        const change = Math.floor(Math.random() * 20) + 10; // 10-29
+        const addOrRemove = Math.random() < 0.5; // 50% chance
+
+        if (addOrRemove) {
+          // increase
+          return prev + change >= 300 ? 300 : prev + change;
+        } else {
+          // decrease only if speed > 150
+          return prev > 150 ? Math.max(0, prev - change) : prev;
+        }
+      });
+    }, 1000);
+
     return () => clearInterval(interval);
   }, []);
 
+
+  // Fact interval
   useEffect(() => {
     const factInterval = setInterval(() => {
-      setIsFactChanging(true);
-      setTimeout(() => {
-        setFactIndex(prev => (prev + 1) % f1Facts.length);
-        setIsFactChanging(false);
-      }, 300);
+      setFactIndex(prev => (prev + 1) % f1Facts.length);
     }, 5000);
     return () => clearInterval(factInterval);
-  }, []);
+  }, [f1Facts.length]); // added dependency to satisfy ESLint
 
   return (
     <div className="w-full min-h-screen relative bg-base-100">
-      {/* Background image overlay */}
+      {/* Background overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center pt-8"
         style={{
           backgroundImage: theme === "lightTheme"
-            ? `
-        linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.5)),
-        url('https://media.richardmille.com/wp-content/uploads/2016/12/25122440/vignetteMCL25.jpg?dpr=1&width=2000')
-      `
-            : `
-        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-        url('https://media.richardmille.com/wp-content/uploads/2016/12/25122440/vignetteMCL25.jpg?dpr=1&width=2000')
-      `,
+            ? `linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.5)), url('https://media.richardmille.com/wp-content/uploads/2016/12/25122440/vignetteMCL25.jpg?dpr=1&width=2000')`
+            : `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://media.richardmille.com/wp-content/uploads/2016/12/25122440/vignetteMCL25.jpg?dpr=1&width=2000')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           zIndex: 0
         }}
       >
-
         {/* Status Badge */}
         <AnimatedSection direction="down" delay={100}>
           <div className="mb-6 sm:mb-8 flex justify-center">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-primary/10 border border-primary/20 rounded-full backdrop-blur-sm">
-              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-primary/10 border border-primary/20 rounded-full backdrop-blur-sm animate-pulse">
+              <div className="w-2 h-2 bg-primary rounded-full"></div>
               <span className="text-xs sm:text-sm font-bold text-primary uppercase tracking-wider text-center">
                 Pit Stop Required
               </span>
@@ -84,41 +86,34 @@ const NotFound = () => {
           </div>
         </AnimatedSection>
 
-
-        {/* Revving 404 with F1 Steering Wheel */}
+        {/* Revving 404 */}
         <AnimatedSection direction="up" delay={200}>
           <div className="relative mb-6 sm:mb-8 flex items-center justify-center gap-2 sm:gap-4 md:gap-8">
-            {/* 4 */}
-            <span className="text-5xl sm:text-7xl md:text-9xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-              4
-            </span>
+            <span className="text-5xl sm:text-7xl md:text-9xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">4</span>
 
-            {/* F1 Steering Wheel - Responsive sizing */}
+            {/* F1 Steering Wheel */}
             <div className="relative w-[25vw] max-w-[140px] min-w-[80px] aspect-[1.27]">
-              <div
-                className="relative w-full h-full animate-[rev_2s_infinite_ease-in-out]"
-              >
-                {/* Main wheel body */}
+              <div className="relative w-full h-full animate-[rev_2s_infinite_ease-in-out]">
                 <div className="absolute inset-0 bg-black rounded-2xl shadow-2xl border-2 border-gray-800">
                   {/* Top display */}
-                  <div className="absolute top-[8%] left-1/2 transform -translate-x-1/2 w-[60%] h-[15%] bg-gray-900 rounded flex items-center justify-center">
-                    <span className="text-primary text-[clamp(0.7rem,2vw,1.2rem)] font-bold">{speed}</span>
+                  <div className="absolute top-[8%] left-1/2 transform -translate-x-1/2 w-[80%] h-[15%] bg-gray-900 rounded flex items-center justify-center">
+                    <span className="text-primary p-2 text-[clamp(0.7rem,1.5vw,1rem)] font-bold">{speed} <span className="text-[10px]">km/h</span></span>
                   </div>
 
-                  {/* Left button cluster */}
+                  {/* Left buttons */}
                   <div className="absolute left-[8%] top-1/2 transform -translate-y-1/2 flex flex-col gap-[5%]">
                     <div className="w-[8%] h-[8%] bg-red-600 rounded-full"></div>
                     <div className="w-[8%] h-[8%] bg-yellow-500 rounded-full"></div>
                   </div>
 
-                  {/* Right button cluster */}
+                  {/* Right buttons */}
                   <div className="absolute right-[8%] top-1/2 transform -translate-y-1/2 flex flex-col gap-[5%]">
                     <div className="w-[8%] h-[8%] bg-green-600 rounded-full"></div>
                     <div className="w-[8%] h-[8%] bg-blue-600 rounded-full"></div>
                   </div>
 
                   {/* Center rotary */}
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[20%] h-[20%] bg-gray-700 rounded-full border-2 border-gray-600"></div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[45%] h-[30%] bg-gray-700 rounded-full border-2 border-gray-600"></div>
 
                   {/* Bottom display */}
                   <div className="absolute bottom-[8%] left-1/2 transform -translate-x-1/2 w-[50%] h-[12%] bg-gray-900 rounded flex items-center justify-center">
@@ -132,19 +127,13 @@ const NotFound = () => {
               </div>
             </div>
 
-            {/* 4 */}
-            <span className="text-5xl sm:text-7xl md:text-9xl font-black bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">
-              4
-            </span>
+            <span className="text-5xl sm:text-7xl md:text-9xl font-black bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">4</span>
           </div>
-
         </AnimatedSection>
 
         {/* Message */}
         <AnimatedSection direction="up" delay={300}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-center text-base-content">
-            Out of Track
-          </h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-center text-base-content">Out of Track</h2>
         </AnimatedSection>
 
         <AnimatedSection direction="up" delay={400}>
@@ -155,34 +144,30 @@ const NotFound = () => {
 
         {/* F1 Fact Section */}
         <AnimatedSection direction="up" delay={500}>
-  <div className="max-w-lg mx-auto mb-6 sm:mb-8 px-2">
-    <div className="bg-base-200/70 backdrop-blur-sm rounded-2xl p-4 sm:p-5 shadow-2xl shadow-black/50 flex flex-col items-center text-center space-y-2">
-      
-      {/* Icon + Heading */}
-      <div className="flex flex-col items-center gap-1 sm:gap-2">
-        <FaTachometerAlt className="text-xl sm:text-2xl text-primary" />
-        <h3 className="font-bold text-base sm:text-lg text-primary m-0">F1 Fact</h3>
-      </div>
-      
-      {/* Fact Text */}
-      <div className="flex items-center">
-        <p className={`text-base-content/80 text-center text-xs sm:text-sm italic m-1 transition-opacity duration-300 ${isFactChanging ? 'opacity-0' : 'opacity-100'}`}>
-          {f1Facts[factIndex]}
-        </p>
-      </div>
-      
-      {/* Dots */}
-      <div className="flex justify-center gap-1 mt-2">
-        {f1Facts.map((_, index) => (
-          <div
-            key={index}
-            className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${index === factIndex ? "bg-primary w-3 sm:w-6" : "bg-base-100"}`}
-          />
-        ))}
-      </div>
-    </div>
-  </div>
-</AnimatedSection>
+          <div className="max-w-lg mx-auto mb-6 sm:mb-8 px-2">
+            <div className="bg-base-200/70 backdrop-blur-sm rounded-2xl p-4 sm:p-5 shadow-2xl shadow-black/50 flex flex-col items-center text-center space-y-2">
+              <div className="flex flex-row items-center gap-1 sm:gap-2">
+                <FaTachometerAlt className="text-xl sm:text-2xl text-primary" />
+                <h3 className="font-bold text-base sm:text-lg text-primary m-0">F1 Fact</h3>
+              </div>
+
+              <div className="flex items-center justify-center h-[3.5rem] sm:h-[4rem]">
+                <p className="text-base-content/80 text-center text-sm sm:text-base italic leading-relaxed transition-opacity duration-300 opacity-100 overflow-hidden">
+                  {f1Facts[factIndex]}
+                </p>
+              </div>
+
+              <div className="flex justify-center gap-1 mt-2">
+                {f1Facts.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${index === factIndex ? "bg-primary w-3 sm:w-6" : "bg-base-100"}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
 
         {/* Buttons */}
         <AnimatedSection direction="up" delay={600}>
@@ -206,10 +191,8 @@ const NotFound = () => {
             </button>
           </div>
         </AnimatedSection>
-
       </div>
 
-      {/* Custom rev animation */}
       <style>
         {`
           @keyframes rev {
@@ -218,7 +201,7 @@ const NotFound = () => {
           }
         `}
       </style>
-    </div >
+    </div>
   );
 };
 

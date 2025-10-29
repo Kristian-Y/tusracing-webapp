@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 const AnimatedSection = ({ children, delay = 0, direction = "up" }) => {
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: 0.1,
+    threshold: 0.15,
   });
 
   // Define translate classes before using them

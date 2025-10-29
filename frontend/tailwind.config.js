@@ -4,68 +4,65 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require('daisyui')],
+  plugins: [require("daisyui")],
   daisyui: {
     themes: [
-      // Calm and Refreshing Light Theme
       {
         lightTheme: {
-          primary: "#3B82F6",           // A professional and approachable blue
-          "primary-focus": "#2563EB",
+          primary: "#0066FF", // F1 Blue - a professional, calming blue
+          "primary-focus": "#0052CC",
           "primary-content": "#ffffff",
 
-          secondary: "#93C5FD",         // A softer, lighter blue for accents
-          "secondary-focus": "#60A5FA",
-          "secondary-content": "#1E293B",
-
-          accent: "#10B981",            // A gentle, complementary teal for highlights
-          "accent-focus": "#059669",
-          "accent-content": "#ffffff",
-
-          neutral: "#F1F5F9",           // A soft, slightly blue-tinted gray for backgrounds
-          "neutral-focus": "#E2E8F0",
-          "neutral-content": "#1E293B",
-
-          "base-100": "#FFFFFF",        // Clean white for the main background
-          "base-200": "#F8FAFC",        // Slightly off-white for cards and sections
-          "base-300": "#F1F5F9",
-          "base-content": "#1F2937",    // A dark slate for excellent readability
-
-          info: "#0EA5E9",
-          success: "#22C55E",
-          warning: "#F59E0B",
-          error: "#EF4444",
-        },
-      },
-
-      // Calm and Professional Dark Theme
-      {
-        darkTheme: {
-          primary: "#60A5FA",           // A brighter blue to stand out on a dark background
-          "primary-focus": "#3B82F6",
-          "primary-content": "#0F172A",
-
-          secondary: "#3B82F6",         // A slightly deeper blue for secondary elements
-          "secondary-focus": "#2563EB",
+          secondary: "#15151E", // Dark charcoal for secondary elements
+          "secondary-focus": "#2A2A3E",
           "secondary-content": "#ffffff",
 
-          accent: "#14B8A6",            // A muted, elegant teal for accents
-          "accent-focus": "#0D9488",
+          accent: "#00A651", // F1 Green - vibrant green for accents
+          "accent-focus": "#008842",
           "accent-content": "#ffffff",
 
-          neutral: "#1E293B",           // A deep, cool-toned slate for backgrounds
-          "neutral-focus": "#334155",
-          "neutral-content": "#E2E8F0",
+          neutral: "#E0E5EB", // Medium gray for better contrast with white
+          "neutral-focus": "#C0C8D2",
+          "neutral-content": "#15151E",
 
-          "base-100": "#0F172A",        // The primary dark background color
-          "base-200": "#1E293B",        // For cards and layered sections
-          "base-300": "#334155",
-          "base-content": "#E2E8F0",    // A light gray for comfortable reading
+          "base-100": "#FFFFFF", // Clean white for the main background
+          "base-200": "#F0F4F8", // More distinct off-white for cards and sections
+          "base-300": "#E0E5EB", // Lighter gray for nested elements
+          "base-content": "#15151E", // Dark charcoal for excellent readability
 
-          info: "#0EA5E9",
-          success: "#22C55E",
-          warning: "#F59E0B",
-          error: "#F43F5E",
+          info: "#0052CC", // Blue tone for info messages
+          success: "#00A651", // Green for success messages
+          warning: "#FFB81C", // F1 Yellow - warning color
+          error: "#E10600", // Red for error messages
+        },
+      },
+      {
+        darkTheme: {
+          primary: "#0066FF", // F1 Blue - keeping the blue for dark theme
+          "primary-focus": "#3380FF",
+          "primary-content": "#ffffff",
+
+          secondary: "#2A2A3E", // Medium charcoal for secondary elements
+          "secondary-focus": "#3A3A4E",
+          "secondary-content": "#ffffff",
+
+          accent: "#00CC66", // Brighter green for dark theme
+          "accent-focus": "#00DD77",
+          "accent-content": "#ffffff",
+
+          neutral: "#1A1A1F", // Very dark charcoal for backgrounds
+          "neutral-focus": "#2A2A2F",
+          "neutral-content": "#E5E5E5",
+
+          "base-100": "#0A0A0F", // The primary dark background color - very dark
+          "base-200": "#15151E", // For cards and layered sections
+          "base-300": "#1A1A2E",
+          "base-content": "#E5E5E5", // Light grey for comfortable reading
+
+          info: "#3380FF", // Brighter blue for dark theme
+          success: "#00CC66", // Brighter green for dark theme
+          warning: "#FFCC33", // Brighter yellow for dark theme
+          error: "#FF3333", // Brighter red for dark theme
         },
       },
     ],

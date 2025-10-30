@@ -9,6 +9,7 @@ import History from "./pages/about-us/history/History.jsx";
 import JoinUs from "./pages/about-us/join-us/JoinUs.jsx";
 import Sponsors from "./pages/sponsors/Sponsors.jsx";
 import Contacts from "./pages/contacts/Contacts.jsx";
+import Gallery from "./pages/gallery/Gallery.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import GoUpButton from "./components/up-button/GoUpButton.jsx";
@@ -29,7 +30,8 @@ const App = () => {
           <Route path="/about/our-history" element={<History />} />
           <Route path="/about/join-us" element={<JoinUs />} />
           <Route path="/sponsors" element={<Sponsors />} />
-          <Route path="/contact" element={<Contacts />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contacts" element={<Contacts />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 

@@ -198,7 +198,7 @@ const JoinUs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-base-100 relative overflow-hidden">
+    <div className="min-h-[100vh] bg-base-100 relative overflow-hidden pt-8">
       {/* Toast Container */}
       <Toaster />
       
@@ -234,11 +234,10 @@ const JoinUs = () => {
             <div className="max-w-4xl mx-auto">
               <div className="inline-block mb-4 relative">
                 <span className="px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm flex items-center">
-                  <FaFlagCheckered className="mr-2 animate-pulse" />
                   JOIN OUR TEAM
                 </span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
                 Become Part of Our Racing Legacy
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">

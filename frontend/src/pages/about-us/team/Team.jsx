@@ -54,7 +54,7 @@ const Team = () => {
       id: 2,
       name: "Engine",
       icon: <FaCog />,
-      color: "secondary",
+      color: "primary",
       description: "Powertrain performance and optimization",
       members: [
         {
@@ -91,7 +91,7 @@ const Team = () => {
       id: 3,
       name: "Electronics",
       icon: <FaBolt />,
-      color: "accent",
+      color: "primary",
       description: "Vehicle control systems and data acquisition",
       members: [
         {
@@ -121,7 +121,7 @@ const Team = () => {
       id: 4,
       name: "Design",
       icon: <FaPaintBrush />,
-      color: "info",
+      color: "primary",
       description: "Aerodynamics and visual aesthetics",
       members: [
         {
@@ -164,7 +164,7 @@ const Team = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-base-100">
+    <div className="min-h-[100vh] mt-8 bg-base-100">
       {/* ================= HERO SECTION ================= */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
@@ -179,7 +179,7 @@ const Team = () => {
                   OUR TEAM
                 </span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
                 Meet Our Racing Team
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">

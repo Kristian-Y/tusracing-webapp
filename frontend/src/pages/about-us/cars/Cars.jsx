@@ -1,4 +1,4 @@
-import { FaCar, FaTachometerAlt, FaWeight, FaCogs, FaGasPump, FaCalendarAlt, FaTrophy, FaLightbulb, FaMoon } from 'react-icons/fa';
+import { FaCar, FaTachometerAlt, FaWeight, FaCogs, FaGasPump, FaTrophy } from 'react-icons/fa';
 import { GiCarWheel, GiSteeringWheel, GiRaceCar } from 'react-icons/gi';
 import { PiEngine } from "react-icons/pi";
 import { BsSpeedometer2, BsFuelPump } from 'react-icons/bs';
@@ -97,7 +97,7 @@ const Cars = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-base-100">
+    <div className="min-h-[100vh] bg-base-100 pt-8">
       {/* ================= HERO SECTION ================= */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
@@ -112,7 +112,7 @@ const Cars = () => {
                   OUR CARS
                 </span>
               </div>
-              <h1 className="text-5xl md:text-7xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
                 Formula Student Racing Cars
               </h1>
               <p className="text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">

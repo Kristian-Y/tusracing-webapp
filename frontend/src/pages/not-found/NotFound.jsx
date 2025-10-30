@@ -61,7 +61,7 @@ const NotFound = () => {
   }, [f1Facts.length]); // added dependency to satisfy ESLint
 
   return (
-    <div className="w-full min-h-screen relative bg-base-100">
+    <div className="w-full min-h-[100vh] pt-8 relative bg-base-100">
       {/* Background overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center pt-8"

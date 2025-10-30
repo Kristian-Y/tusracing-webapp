@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "../../theme-manager/ThemeContext";
 
 const Navbar = () => {
@@ -7,8 +7,8 @@ const Navbar = () => {
 
   const navItems = [
     { name: "About", href: "/about" },
-    { name: "Formula Student", href: "/formula-student" },
     { name: "Gallery", href: "/gallery" },
+    { name: "Contacts", href: "/contacts" },
     { name: "Sponsors", href: "/sponsors" },
   ];
 

@@ -9,7 +9,7 @@ const GoUpButton = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 900) {
+      if (window.scrollY > 250) {
         setShowButton(true); // show the button
       } else {
         setShowButton(false); // hide the button

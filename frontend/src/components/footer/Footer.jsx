@@ -8,46 +8,45 @@ const Footer = () => {
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
-      
+
       {/* Racing Track Line */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary"></div>
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
         {/* Top Section with Team Info */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
           {/* Team Info */}
           <AnimatedSection delay={0} direction="up">
-            <div className="flex flex-col items-center lg:items-start">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
-                  <FaFlagCheckered className="text-white text-xl" />
-                </div>
-                <h3 className="text-2xl font-bold">
-                  <span className="font-black">TU Sofia</span> <span className="text-primary font-bold">Racing Team</span>
-                </h3>
+            <div className="flex flex-col items-center">
+              <div className="flex flex-col items-cen ter gap-3 mb-4">
+                <img
+                  src="/images/logo/logo-tus-racing-team-blue.png"
+                  alt="TU Sofia Racing Team"
+                  className="max-w-[250px]"
+                />
               </div>
-              <p className="text-base-content/80 mb-6 text-center lg:text-left max-w-md">
-                Engineering excellence on wheels. We're TU Sofia's premier Formula Student racing team, 
+              <p className="text-base-content/80 mb-6 max-w-md text-center">
+                Engineering excellence on wheels. We're TU Sofia's premier Formula Student racing team,
                 pushing the boundaries of innovation and performance.
               </p>
-              <div className="flex gap-4 mb-6">
+              <div className="flex justify-around mb-6 w-full">
                 <div className="flex items-center gap-2">
-                  <FaTrophy className="text-accent" />
+                  <FaTrophy className="text-accent text-lg" />
                   <span className="text-sm font-semibold">1 Award</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <FaTools className="text-primary" />
+                  <FaTools className="text-primary text-lg" />
                   <span className="text-sm font-semibold">3 Cars Built</span>
                 </div>
               </div>
             </div>
           </AnimatedSection>
 
-          {/* Quick Links - Not Centered */}
+          {/* Quick Links */}
           <AnimatedSection delay={150} direction="up">
-            <div className="flex flex-col items-start">
-              <h4 className="text-xl font-bold mb-4">Quick Links</h4>
-              <div className="grid grid-cols-2 gap-3 w-full">
+            <div className="flex flex-col items-center">
+              <h4 className="text-xl font-bold mb-4 text-center">Quick Links</h4>
+              <div className="grid grid-cols-2 gap-3 w-full justify-items-center">
                 <a href="/" className="link link-hover flex items-center gap-2 text-sm">
                   <span className="w-2 h-2 bg-primary rounded-full"></span> Home
                 </a>
@@ -70,39 +69,41 @@ const Footer = () => {
             </div>
           </AnimatedSection>
 
+
           {/* Contact Info - Compact */}
           <AnimatedSection delay={300} direction="up">
-            <div>
-              <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <div className="flex flex-col items-center">
+              <h4 className="text-xl font-bold mb-4 flex items-center gap-2 justify-center">
                 <FaEnvelope className="text-primary" />
                 Get In Touch
               </h4>
-              <div className="bg-base-100 rounded-xl p-4 shadow-lg space-y-3">
-                <div className="flex items-start gap-3">
-                  <FaMapMarkerAlt className="text-primary mt-1" />
-                  <div>
-                    <h5 className="font-semibold">Headquarters</h5>
+              <div className="bg-base-100 rounded-xl p-4 shadow-lg w-full max-w-md space-y-3">
+                <div className="flex items-center justify-center gap-3">
+                  <FaMapMarkerAlt className="text-primary text-lg" />
+                  <div className="text-center">
+                    <h5 className=" font-semibold">Headquarters</h5>
                     <p className="text-sm text-base-content/70">
                       Block 9 of the Technical University of Sofia<br />
                       8 Kliment Ohridski Blvd., 1756 Sofia, Bulgaria
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <FaEnvelope className="text-primary" />
-                  <a href="mailto:info@fstteam.com" className="link link-hover">
+                <div className="flex items-center justify-center gap-3">
+                  <FaEnvelope className="text-primary text-lg" />
+                  <a href="mailto:info@fstteam.com" className="link link-hover text-center">
                     info@fstteam.com
                   </a>
                 </div>
-                <div className="flex items-center gap-3">
-                  <FaPhone className="text-primary" />
-                  <a href="tel:+35912345678" className="link link-hover">
+                <div className="flex items-center justify-center gap-3">
+                  <FaPhone className="text-primary text-lg" />
+                  <a href="tel:+35912345678" className="link link-hover text-center">
                     +359 123 456 78
                   </a>
                 </div>
               </div>
             </div>
           </AnimatedSection>
+
         </div>
 
         {/* Full Width Map */}
@@ -139,36 +140,36 @@ const Footer = () => {
                 <a href="/cookies" className="link link-hover text-xs">Cookie Policy</a>
               </div>
             </div>
-            
+
             <div className="flex gap-4">
-              <a 
-                href="https://www.instagram.com/tus_racingteam/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.instagram.com/tus_racingteam/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
               >
                 <FaInstagram />
               </a>
-              <a 
-                href="https://github.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
               >
                 <FaGithub />
               </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
               >
                 <FaLinkedin />
               </a>
-              <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
               >
                 <FaTwitter />

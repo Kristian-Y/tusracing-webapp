@@ -37,13 +37,14 @@ const Navbar = () => {
     >
 
       <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-        {/* Logo */}
+
         <img
-          src="images/icons/logo/logo-tus-white.svg"
-          alt="FST Racing Logo"
-          className="w-[120px] object-contain cursor-pointer"
+          src="/images/logo/logo-tus-racing-team-blue.png"
+          alt="TU Sofia Racing Team"
+          className="sm:w-[160px] w-[120px] object-contain cursor-pointer"
           onClick={() => (window.location.href = "/")}
         />
+
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
@@ -124,14 +125,15 @@ const Navbar = () => {
         `}
       >
         {/* Logo Section */}
-        <div className="flex flex-row items-center mb-10 gap-4">
+        <div className="flex flex-col items-center mb-10 gap-4">
           <img
-            src="images/icons/logo/logo-tus-white.svg"
-            alt="FST Racing Logo"
-            className="w-16 h-16 object-contain mb-2 sm:w-20 sm:h-20"
+            src="/images/logo/logo-tus-racing-team-blue.png"
+            alt="TU Sofia Racing Team"
+            className="w-[160px] object-contain mb-2 sm:w-[180px]"
+            onClick={() => (window.location.href = "/")}
           />
           <h1 className="text-2xl sm:text-3xl font-bold tracking-wide text-base-content">
-            FST Racing
+            TU Sofia Racing Team
           </h1>
         </div>
 

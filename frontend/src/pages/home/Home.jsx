@@ -135,9 +135,9 @@ const Home = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
             {[
-              { value: "50+", label: "Team Members" },
-              { value: "8", label: "Race Cars Built" },
-              { value: "15+", label: "Competitions" },
+              { value: "20+", label: "Team Members" },
+              { value: "2", label: "Race Cars Built" },
+              { value: "5+", label: "Competitions" },
               { value: "3", label: "Continents" }
             ].map((stat, index) => (
               <AnimatedSection key={index} delay={index * 100} direction="up">

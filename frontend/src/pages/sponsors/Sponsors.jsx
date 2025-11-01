@@ -6,6 +6,13 @@ import {
 import { useTheme } from "../../theme-manager/ThemeContext";
 import AnimatedSection from "../../components/animate/AnimatedSection";
 import toast, { Toaster } from 'react-hot-toast';
+import api from '../../api/axios';
+// Initial sponsor tiers (module-level so identity is stable for hooks)
+const INITIAL_SPONSOR_TIERS = [
+  { id: "title", name: "Title Sponsor", icon: <FaCrown />, color: "primary", description: "Our premier partners who drive our success", sponsors: [] },
+  { id: "gold", name: "Gold Sponsor", icon: <FaTrophy />, color: "warning", description: "Major contributors to our racing excellence", sponsors: [] },
+  { id: "bronze", name: "Bronze Sponsor", icon: <FaGem />, color: "accent", description: "Essential partners in our racing ecosystem", sponsors: [] }
+];
 
 const Sponsors = () => {
   const { theme } = useTheme();
@@ -39,6 +46,34 @@ const Sponsors = () => {
     }
   };
 
+  // keep sponsor tiers in state so we can update them without mutating module constants
+  const [sponsorTiers, setSponsorTiers] = useState(INITIAL_SPONSOR_TIERS);
+
+  // fetch sponsors on component mount
+  useEffect(() => {
+    const fetchSponsors = async () => {
+      try {
+        const response = await api.get('/sponsors');
+        // create a fresh copy of the tiers and populate sponsors without mutating initial data
+        const newTiers = INITIAL_SPONSOR_TIERS.map(t => ({ ...t, sponsors: [] }));
+        response.data.forEach(element => {
+          console.log('Processing sponsor:', element);
+          const tier = newTiers.find(t => t.id === element.type);
+          if (tier) {
+            tier.sponsors.push(element);
+          }
+        });
+
+        console.log('Organized sponsors by tier:', newTiers);
+        setSponsorTiers(newTiers);
+      } catch (error) {
+        console.error('Error fetching sponsors:', error);
+      }
+    };
+
+    fetchSponsors();
+  }, []);
+ 
   // Calculate form progress
   useEffect(() => {
     const filledFields = Object.values(formData).filter(value => value !== "" && value !== null).length;
@@ -101,17 +136,21 @@ const Sponsors = () => {
     }
   };
 
-  const handleTierClick = (tier) => {
-    setFormData({ ...formData, tier: tier.name });
-    setTimeout(() => document.getElementById('sponsorship-form').scrollIntoView({ behavior: 'smooth' }), 100);
-  };
+  // const handleTierClick = (tier) => {
+  //   setFormData({ ...formData, tier: tier.name });
+  //   setTimeout(() => document.getElementById('sponsorship-form').scrollIntoView({ behavior: 'smooth' }), 100);
+  // };
 
-  const sponsorTiers = [
-    { id: "title", name: "Title Sponsor", icon: <FaCrown />, color: "primary", description: "Our premier partners who drive our success", sponsors: [{ name: "SpeedTech Motors", logo: "https://picsum.photos/seed/speedtech/200/100.jpg" }, { name: "Racing Dynamics", logo: "https://picsum.photos/seed/racingdyn/200/100.jpg" }] },
-    { id: "gold", name: "Gold Sponsor", icon: <FaTrophy />, color: "warning", description: "Major contributors to our racing excellence", sponsors: [{ name: "AutoParts Pro", logo: "https://picsum.photos/seed/autoparts/200/100.jpg" }, { name: "TurboTech", logo: "https://picsum.photos/seed/turbotec/200/100.jpg" }, { name: "RaceFuel Plus", logo: "https://picsum.photos/seed/racefuel/200/100.jpg" }] },
-    { id: "silver", name: "Silver Sponsor", icon: <FaMedal />, color: "", description: "Valued supporters of our engineering journey", sponsors: [{ name: "Mechanical Solutions", logo: "https://picsum.photos/seed/mechsol/200/100.jpg" }, { name: "Carbon Works", logo: "https://picsum.photos/seed/carbon/200/100.jpg" }, { name: "AeroDesign", logo: "https://picsum.photos/seed/aerodes/200/100.jpg" }, { name: "Speed Lubricants", logo: "https://picsum.photos/seed/speedlub/200/100.jpg" }] },
-    { id: "bronze", name: "Bronze Sponsor", icon: <FaGem />, color: "accent", description: "Essential partners in our racing ecosystem", sponsors: [{ name: "FastFix Tools", logo: "https://picsum.photos/seed/fastfix/200/100.jpg" }, { name: "RaceWear", logo: "https://picsum.photos/seed/racewear/200/100.jpg" }, { name: "TrackSide Support", logo: "https://picsum.photos/seed/trackside/200/100.jpg" }, { name: "Velocity Graphics", logo: "https://picsum.photos/seed/velocity/200/100.jpg" }, { name: "PitStop Pro", logo: "https://picsum.photos/seed/pitstop/200/100.jpg" }] }
-  ];
+
+
+  
+
+  // const sponsorTiers = [
+  //   { id: "title", name: "Title Sponsor", icon: <FaCrown />, color: "primary", description: "Our premier partners who drive our success", sponsors: [{ name: "SpeedTech Motors", logo: "https://picsum.photos/seed/speedtech/200/100.jpg" }, { name: "Racing Dynamics", logo: "https://picsum.photos/seed/racingdyn/200/100.jpg" }] },
+  //   { id: "gold", name: "Gold Sponsor", icon: <FaTrophy />, color: "warning", description: "Major contributors to our racing excellence", sponsors: [{ name: "AutoParts Pro", logo: "https://picsum.photos/seed/autoparts/200/100.jpg" }, { name: "TurboTech", logo: "https://picsum.photos/seed/turbotec/200/100.jpg" }, { name: "RaceFuel Plus", logo: "https://picsum.photos/seed/racefuel/200/100.jpg" }] },
+  //   { id: "silver", name: "Silver Sponsor", icon: <FaMedal />, color: "", description: "Valued supporters of our engineering journey", sponsors: [{ name: "Mechanical Solutions", logo: "https://picsum.photos/seed/mechsol/200/100.jpg" }, { name: "Carbon Works", logo: "https://picsum.photos/seed/carbon/200/100.jpg" }, { name: "AeroDesign", logo: "https://picsum.photos/seed/aerodes/200/100.jpg" }, { name: "Speed Lubricants", logo: "https://picsum.photos/seed/speedlub/200/100.jpg" }] },
+  //   { id: "bronze", name: "Bronze Sponsor", icon: <FaGem />, color: "accent", description: "Essential partners in our racing ecosystem", sponsors: [{ name: "FastFix Tools", logo: "https://picsum.photos/seed/fastfix/200/100.jpg" }, { name: "RaceWear", logo: "https://picsum.photos/seed/racewear/200/100.jpg" }, { name: "TrackSide Support", logo: "https://picsum.photos/seed/trackside/200/100.jpg" }, { name: "Velocity Graphics", logo: "https://picsum.photos/seed/velocity/200/100.jpg" }, { name: "PitStop Pro", logo: "https://picsum.photos/seed/pitstop/200/100.jpg" }] }
+  // ];
 
   return (
     <div className="min-h-[100vh] pt-8 bg-base-100">
@@ -160,7 +199,7 @@ const Sponsors = () => {
               <AnimatedSection key={tier.id} direction="up" delay={300 + tierIndex * 100}>
                 <div
                   className={`relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] cursor-pointer ${tierBg[theme === 'darkTheme' ? 'dark' : 'light'][tier.color || 'default']}`}
-                  onClick={() => handleTierClick(tier)}
+                  // onClick={() => handleTierClick(tier)}
                 >
                   <div className="p-6 text-primary-content">
                     <div className="flex flex-col md:flex-row items-center justify-between">
@@ -180,14 +219,16 @@ const Sponsors = () => {
                   <div className="bg-base-100 p-6">
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                       {tier.sponsors.map((sponsor) => (
-                        <div key={sponsor.name} className="group bg-base-200 rounded-xl p-4 hover:bg-base-300 transition-all duration-300">
-                          <div className="aspect-video bg-white rounded-lg overflow-hidden mb-3">
-                            <img src={sponsor.logo} alt={sponsor.name} className="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300" />
+                        <a href={sponsor.link} target="_blank" rel="noreferrer">
+                          <div key={sponsor.name} className="group bg-base-200 rounded-xl p-4 hover:bg-base-300 transition-all duration-300" >
+                            <div className="aspect-video bg-white rounded-lg overflow-hidden mb-3">
+                              <img src={sponsor.logo} alt={sponsor.name} className="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300" />
+                            </div>
+                            <p className="text-center text-sm font-medium text-base-content/80 group-hover:text-primary transition-colors">
+                              {sponsor.name}
+                            </p> 
                           </div>
-                          <p className="text-center text-sm font-medium text-base-content/80 group-hover:text-primary transition-colors">
-                            {sponsor.name}
-                          </p>
-                        </div>
+                        </a>
                       ))}
                     </div>
                   </div>

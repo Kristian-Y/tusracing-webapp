@@ -1,12 +1,21 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import "./Navbar.css";
 import { useTheme } from "../../theme-manager/ThemeContext";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const currentLang = i18n?.language || "en";
+  const targetLang = currentLang && currentLang.startsWith("bg") ? "en" : "bg";
+  const toggleLanguage = () => {
+    i18n.changeLanguage(targetLang);
+  };
+
   const navItems = [
-    { name: "About", href: "/about" },
+    { name: t("navbar.about"), href: "/about" },
     { name: "Gallery", href: "/gallery" },
     { name: "Contacts", href: "/contacts" },
     { name: "Sponsors", href: "/sponsors" },
@@ -61,6 +70,23 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+
+          {/* Language Toggle (flag) */}
+          <button
+            aria-label="Switch language"
+            onClick={toggleLanguage}
+            className="ml-2"
+            title={targetLang === "bg" ? "Български" : "English"}
+          >
+            <span className="flag-button" aria-hidden>
+              <img
+                src={targetLang === "bg" ? "/images/icons/languages/BG-bg.png" : "/images/icons/languages/UK-en.png"}
+                alt={targetLang}
+                className="flag-img"
+              />
+            </span>
+            <span className="sr-only">Switch language</span>
+          </button>
 
           {/* Theme Toggle */}
           <label className="flex cursor-pointer gap-2 items-center">
@@ -150,6 +176,22 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+
+          {/* Language Toggle (mobile) */}
+          <li className="mt-4">
+            <button
+              aria-label="Switch language"
+              onClick={() => { toggleLanguage(); setIsMenuOpen(false); }}
+              className="flag-button inline-flex items-center"
+              title={targetLang === "bg" ? "Български" : "English"}
+            >
+              <img
+                src={targetLang === "bg" ? "/images/icons/languages/BG-bg.png" : "/images/icons/languages/UK-en.png"}
+                alt={targetLang}
+                className="flag-img"
+              />
+            </button>
+          </li>
 
           {/* Theme Toggle */}
           <li className="mt-6">

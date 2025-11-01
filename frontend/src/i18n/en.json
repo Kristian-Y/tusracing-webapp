@@ -1,0 +1,226 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "gallery": "Gallery",
+    "contacts": "Contacts",
+    "sponsors": "Sponsors"
+  },
+
+  "home": {
+    "since": "Since 2015",
+    "titleLine1": "TU Sofia",
+    "titleLine2": "Racing Team",
+    "subtitle": "Engineering Excellence. Racing Innovation.",
+    "buttons": {
+      "ourCars": "Our Cars",
+      "joinTeam": "Join Team"
+    },
+    "stats": {
+      "teamMembers": "Team Members",
+      "raceCars": "Race Cars Built",
+      "competitions": "Competitions",
+      "continents": "Continents"
+    },
+    "achievementsTitle": "Our Achievements",
+    "achievementsSubtitle": "Pushing the limits of engineering excellence in competitive racing",
+    "coreValuesTitle": "Core Values",
+    "coreValuesSubtitle": "The principles that drive our success on and off the track",
+    "partnersTitle": "Trusted Partners",
+    "partnersSubtitle": "Building lasting relationships with industry leaders",
+    "ctaTitle": "Ready to Join the Race?",
+    "ctaDescription": "Become part of a legacy of engineering excellence. Whether you're a student, sponsor, or enthusiast, there's a place for you in our team.",
+    "cta": {
+      "becomeSponsor": "Become a Sponsor",
+      "joinOurTeam": "Join Our Team"
+    }
+  },
+
+  "about": {
+    "badge": "ABOUT TU SOFIA RACING TEAM",
+    "heroTitle": "Discover Our Journey",
+    "heroDescription": "Explore the heart of TU Sofia Racing Team — from our cutting-edge race cars to the passionate individuals who make it all possible.",
+    "cards": {
+      "ourRaceCars": {
+        "title": "Our Race Cars",
+        "description": "Our race cars are the result of cutting-edge engineering and meticulous design. Each car is built to perform at the highest level, combining speed, agility, and precision on the track.",
+        "cta": "Explore"
+      },
+      "ourTeam": {
+        "title": "Our Team",
+        "description": "Our team is made up of passionate individuals dedicated to excellence in engineering and motorsport. Together, we combine diverse skills to build high-performance racecars.",
+        "cta": "Explore"
+      },
+      "ourHistory": {
+        "title": "Our History",
+        "description": "Our team began with a shared passion for motorsport and innovation. Over the years, we've grown into a respected force in Formula Student.",
+        "cta": "Explore"
+      },
+      "joinUs": {
+        "title": "Join Us",
+        "description": "Apply now to join our Formula Student team and showcase your engineering skills. Be part of a dynamic project that combines innovation, teamwork, and racing.",
+        "cta": "Explore"
+      }
+    },
+    "ctaTitle": "Ready to Be Part of Our Story?",
+    "ctaDescription": "Join us in our pursuit of engineering excellence and racing innovation.",
+    "ctaButtons": {
+      "joinTheTeam": "Join the Team",
+      "contactUs": "Contact Us"
+    }
+  },
+
+  "history": {
+    "badge": "OUR JOURNEY",
+    "heroTitle": "Racing Through History",
+    "heroDescription": "From a small group of passionate students to a championship-winning team, discover our journey of innovation, teamwork, and racing excellence.",
+    "timelineTitle": "Our Timeline",
+    "timelineDescription": "Navigate through our history to see key milestones and achievements",
+    "yearsLabel": "Years",
+    "keyAchievementsTitle": "Key Achievements"
+  },
+
+  "team": {
+    "badge": "OUR TEAM",
+    "heroTitle": "Meet Our Racing Team",
+    "heroDescription": "Passionate students from diverse backgrounds working together to build championship-winning racing cars.",
+    "stats": {
+      "teamMembers": "Team Members",
+      "departments": "Departments",
+      "raceCars": "Race Cars Built",
+      "awards": "Awards Won"
+    },
+    "joinCtaTitle": "Want to Join Our Team?",
+    "joinCtaDescription": "We're always looking for passionate students to join our racing team. Whether you're an engineer, designer, or business student, there's a place for you.",
+    "applyNow": "Apply Now"
+  },
+
+  "cars": {
+    "badge": "OUR CARS",
+    "pageTitle": "Formula Student Racing Cars",
+    "pageDescription": "Engineering excellence meets competitive racing. Explore our high-performance combustion engine vehicles designed and built by student engineers.",
+    "engineBadge": "Engine",
+    "technicalSpecifications": "Technical Specifications",
+    "achievementLabel": "Achievement",
+    "topSpeed": "Top Speed",
+    "power": "Power",
+    "acceleration": "Acceleration",
+    "weight": "Weight"
+  },
+
+  "joinUs": {
+    "badge": "JOIN OUR TEAM",
+    "heroTitle": "Become Part of Our Racing Legacy",
+    "heroDescription": "Join our team of passionate engineers and designers. Fill out the application form below to start your journey with TU Sofia Racing Team.",
+    "applicationProgressLabel": "Application Progress",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "university": "University",
+      "major": "Major",
+      "degreeProgram": "Degree Program",
+      "selectDegreePlaceholder": "Select your degree program",
+      "yearOfStudy": "Year of Study",
+      "selectYearPlaceholder": "Select your current year",
+      "semester": "Semester",
+      "portfolioLink": "Portfolio Link (Optional)",
+      "skills": "Skills",
+      "motivation": "Motivation",
+      "submitButton": "Submit Application",
+      "submitting": "Submitting...",
+      "successTitle": "Application Submitted!",
+      "successMessage": "Thank you for your interest in joining our team. We'll review your application and get back to you soon."
+    },
+    "placeholders": {
+      "firstName": "e.g., John",
+      "lastName": "e.g., Smith",
+      "email": "e.g., john.smith@example.com",
+      "phone": "e.g., +359 888 123 456",
+      "university": "e.g., Technical University of Sofia",
+      "major": "e.g., Mechanical Engineering",
+      "portfolioPlaceholder": "e.g., https://myportfolio.com",
+      "skillsPlaceholder": "e.g., CAD design, CFD analysis, MATLAB programming, welding, composite materials",
+      "motivationPlaceholder": "Tell us why you want to join our racing team and what you hope to contribute"
+    }
+  },
+
+  "contacts": {
+    "badge": "GET IN TOUCH",
+    "heroTitle": "Contact Our Racing Team",
+    "heroDescription": "Have questions about our team, want to sponsor us, or interested in joining? We'd love to hear from you.",
+    "contactMethods": {
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "officeHours": "Office Hours"
+    },
+    "form": {
+      "formProgress": "Form Progress",
+      "yourName": "Your Name",
+      "emailAddress": "Email Address",
+      "subject": "Subject",
+      "message": "Message",
+      "sendMessage": "Send Message",
+      "sending": "Sending...",
+      "messageSentTitle": "Message Sent!",
+      "messageSentDescription": "Thank you for your message. We'll get back to you soon."
+    },
+    "findUsTitle": "Find Us",
+    "findUsMapTitle": "Our Location",
+    "supportTitle": "Support Our Racing Team",
+    "supportDescription": "Your support helps us build competitive race cars and develop the next generation of engineers. Consider sponsoring our team or making a donation.",
+    "becomeSponsor": "Become a Sponsor",
+    "makeDonation": "Make a Donation",
+    "followUsTitle": "Follow Us on Social Media",
+    "followUsDescription": "Stay updated with our latest news, race results, and behind-the-scenes content."
+  },
+
+  "gallery": {
+    "badge": "GALLERY",
+    "title": "Our Racing Journey",
+    "description": "Explore our collection of race cars, competitions, and team moments that define our journey to excellence",
+    "photosLabel": "photos",
+    "pressEsc": "Press ESC to close",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "closeGallery": "Close gallery"
+  },
+
+  "notFound": {
+    "statusBadge": "Pit Stop Required",
+    "title": "Out of Track",
+    "message": "Looks like you've gone off the racing line! This page might be in the garage for repairs or has been retired from the circuit.",
+    "f1FactTitle": "F1 Fact",
+    "returnButton": "Return to Pit Lane",
+    "searchButton": "Search Circuit",
+    "pressEscClose": "Press ESC to close"
+  },
+
+  "footer": {
+    "about": "Engineering excellence on wheels. We're TU Sofia's premier Formula Student racing team, pushing the boundaries of innovation and performance.",
+    "awards": "1 Award",
+    "carsBuilt": "3 Cars Built"
+  },
+
+  "forms": {
+    "validation": {
+      "required": "is required",
+      "minChars": "must be at least {{count}} characters",
+      "invalidEmail": "Email is invalid",
+      "invalidPhone": "Phone number is invalid",
+      "invalidUrl": "Portfolio link must be a valid URL (http:// or https://)",
+      "semesterRange": "Semester must be 1 or 2"
+    }
+  },
+
+  "general": {
+    "loading": "Loading...",
+    "close": "Close",
+    "explore": "Explore",
+    "applyNow": "Apply Now",
+    "becomeSponsor": "Become a Sponsor",
+    "joinOurTeam": "Join Our Team"
+  }
+}

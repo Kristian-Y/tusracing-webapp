@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebook, FaTwitter, FaLinkedin, FaClock, FaPaperPlane, FaHeadset, FaUser, FaCheckCircle } from 'react-icons/fa';
 import { useTheme } from "../../theme-manager/ThemeContext";
+import { useTranslation } from 'react-i18next';
 import AnimatedSection from "../../components/animate/AnimatedSection";
 import toast, { Toaster } from 'react-hot-toast';
 
 const Contacts = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -45,30 +47,30 @@ const Contacts = () => {
 
     // Name validation
     if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
+      newErrors.name = `${t('contacts.form.yourName')} ${t('forms.validation.required')}`;
     } else if (formData.name.length < 2) {
-      newErrors.name = "Name must be at least 2 characters";
+      newErrors.name = t('forms.validation.minChars', { count: 2 });
     }
 
     // Email validation
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = `${t('contacts.form.emailAddress')} ${t('forms.validation.required')}`;
     } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
+      newErrors.email = t('forms.validation.invalidEmail');
     }
 
     // Subject validation
     if (!formData.subject.trim()) {
-      newErrors.subject = "Subject is required";
+      newErrors.subject = `${t('contacts.form.subject')} ${t('forms.validation.required')}`;
     } else if (formData.subject.length < 3) {
-      newErrors.subject = "Subject must be at least 3 characters";
+      newErrors.subject = t('forms.validation.minChars', { count: 3 });
     }
 
     // Message validation
     if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
+      newErrors.message = `${t('contacts.form.message')} ${t('forms.validation.required')}`;
     } else if (formData.message.length < 10) {
-      newErrors.message = "Message must be at least 10 characters";
+      newErrors.message = t('forms.validation.minChars', { count: 10 });
     }
 
     setErrors(newErrors);
@@ -111,7 +113,7 @@ const Contacts = () => {
         setShowSuccess(true);
         
         // Show success toast
-        toast.success('Your message has been sent successfully! We\'ll get back to you soon.', {
+        toast.success(t('contacts.form.messageSentTitle') + ' ' + t('contacts.form.messageSentDescription'), {
           duration: 5000,
           position: 'top-center',
           style: {
@@ -137,7 +139,7 @@ const Contacts = () => {
   const contactMethods = [
     {
       id: 1,
-      name: "Email",
+      name: t('contacts.contactMethods.email'),
       icon: <FaEnvelope />,
       color: "primary",
       value: "contact@racingteam.com",
@@ -145,7 +147,7 @@ const Contacts = () => {
     },
     {
       id: 2,
-      name: "Phone",
+      name: t('contacts.contactMethods.phone'),
       icon: <FaPhone />,
       color: "primary",
       value: "+1 (555) 123-4567",
@@ -153,7 +155,7 @@ const Contacts = () => {
     },
     {
       id: 3,
-      name: "Address",
+      name: t('contacts.contactMethods.address'),
       icon: <FaMapMarkerAlt />,
       color: "primary",
       value: "123 Racing Lane, Speed City, SC 12345",
@@ -161,7 +163,7 @@ const Contacts = () => {
     },
     {
       id: 4,
-      name: "Office Hours",
+      name: t('contacts.contactMethods.officeHours'),
       icon: <FaClock />,
       color: "primary",
       value: "Mon-Fri: 9AM-6PM",
@@ -234,14 +236,14 @@ const Contacts = () => {
             <div className="max-w-4xl mx-auto">
               <div className="inline-block mb-4">
                 <span className="px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm">
-                  GET IN TOUCH
+                  {t('contacts.badge')}
                 </span>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
-                Contact Our Racing Team
+                {t('contacts.heroTitle')}
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
-                Have questions about our team, want to sponsor us, or interested in joining? We'd love to hear from you.
+                {t('contacts.heroDescription')}
               </p>
             </div>
           </AnimatedSection>
@@ -280,9 +282,9 @@ const Contacts = () => {
           {/* Contact Form */}
           <AnimatedSection direction="up" delay={200}>
             {/* Progress Bar */}
-            <div className="mb-6">
+              <div className="mb-6">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium">Form Progress</span>
+                <span className="text-sm font-medium">{t('contacts.form.formProgress')}</span>
                 <span className="text-sm font-medium">{formProgress}%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
@@ -305,16 +307,16 @@ const Contacts = () => {
               <div className="card-body p-6 sm:p-8">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 flex items-center">
                   <FaPaperPlane className="mr-3 text-primary" />
-                  Send Us a Message
+                  {t('contacts.form.sendMessage')}
                 </h2>
                 
-                {showSuccess ? (
+                    {showSuccess ? (
                   <div className="text-center py-12">
                     <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-success/20 mb-6 animate-pulse">
                       <FaCheckCircle className="text-5xl text-success" />
                     </div>
-                    <h2 className="text-3xl font-bold mb-4">Message Sent!</h2>
-                    <p className="text-lg mb-6">Thank you for your message. We'll get back to you soon.</p>
+                    <h2 className="text-3xl font-bold mb-4">{t('contacts.form.messageSentTitle')}</h2>
+                    <p className="text-lg mb-6">{t('contacts.form.messageSentDescription')}</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
@@ -322,7 +324,7 @@ const Contacts = () => {
                       <label className="label">
                         <span className="label-text font-medium flex items-center">
                           <FaUser className="mr-2 text-primary" />
-                          Your Name
+                          {t('contacts.form.yourName')}
                         </span>
                       </label>
                       <input
@@ -332,7 +334,7 @@ const Contacts = () => {
                         onChange={handleInputChange}
                         onFocus={handleFocus}
                         onBlur={handleBlur}
-                        placeholder="John Doe"
+                          placeholder={t('contacts.form.placeholders.firstName') || 'John Doe'}
                         className={`input input-bordered w-full rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 placeholder:text-base-content/40 ${errors.name ? 'input-error border-error' : ''}`}
                         required
                       />
@@ -343,7 +345,7 @@ const Contacts = () => {
                       <label className="label">
                         <span className="label-text font-medium flex items-center">
                           <FaEnvelope className="mr-2 text-primary" />
-                          Email Address
+                          {t('contacts.form.emailAddress')}
                         </span>
                       </label>
                       <input
@@ -353,7 +355,7 @@ const Contacts = () => {
                         onChange={handleInputChange}
                         onFocus={handleFocus}
                         onBlur={handleBlur}
-                        placeholder="john@example.com"
+                        placeholder={t('contacts.form.placeholders.email') || 'john@example.com'}
                         className={`input input-bordered w-full rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 placeholder:text-base-content/40 ${errors.email ? 'input-error border-error' : ''}`}
                         required
                       />
@@ -362,7 +364,7 @@ const Contacts = () => {
                     
                     <div className={`form-control transform transition-all duration-300 ${activeField === "subject" ? "scale-105" : ""}`}>
                       <label className="label">
-                        <span className="label-text font-medium">Subject</span>
+                        <span className="label-text font-medium">{t('contacts.form.subject')}</span>
                       </label>
                       <input
                         type="text"
@@ -371,7 +373,7 @@ const Contacts = () => {
                         onChange={handleInputChange}
                         onFocus={handleFocus}
                         onBlur={handleBlur}
-                        placeholder="Sponsorship Inquiry"
+                        placeholder={t('contacts.form.placeholders.subject') || 'Sponsorship Inquiry'}
                         className={`input input-bordered w-full rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 placeholder:text-base-content/40 ${errors.subject ? 'input-error border-error' : ''}`}
                         required
                       />
@@ -400,7 +402,7 @@ const Contacts = () => {
                       className={`btn btn-primary w-full rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ${isSubmitting ? 'loading' : ''}`}
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                      {isSubmitting ? t('contacts.form.sending') : t('contacts.form.sendMessage')}
                     </button>
                   </form>
                 )}

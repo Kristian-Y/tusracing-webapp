@@ -1,8 +1,10 @@
 import AnimatedSection from "../../components/animate/AnimatedSection";
 import { useTheme } from "../../theme-manager/ThemeContext";
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   const achievements = [
     {
@@ -81,32 +83,32 @@ const Home = () => {
             <AnimatedSection delay={0} direction="up">
               <div className="mb-4 sm:mb-6">
                 <span className="inline-block px-3 py-1 sm:px-4 sm:py-2 bg-primary text-primary-content text-xs sm:text-sm font-bold rounded-full uppercase tracking-wider animate-pulse">
-                  Since 2015
+                  {t('home.since')}
                 </span>
               </div>
             </AnimatedSection>
 
             <AnimatedSection delay={200} direction="up">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-4 sm:mb-6">
-                TU Sofia
+                {t('home.titleLine1')}
                 <br />
-                <span className="text-primary">Racing Team</span>
+                <span className="text-primary">{t('home.titleLine2')}</span>
               </h1>
             </AnimatedSection>
 
             <AnimatedSection delay={400} direction="up">
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-6 sm:mb-8">
-                Engineering Excellence. Racing Innovation.
+                {t('home.subtitle')}
               </p>
             </AnimatedSection>
 
             <AnimatedSection delay={600} direction="up">
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <button className="btn btn-primary btn-md sm:btn-lg px-6 sm:px-8 shadow-2xl hover:scale-105 transition-transform duration-300">
-                  Our Cars
+                  {t('home.buttons.ourCars')}
                 </button>
                 <button className="btn btn-md sm:btn-lg px-6 sm:px-8 hover:bg-accent hover:text-base-100 transition-all duration-300">
-                  Join Team
+                  {t('home.buttons.joinTeam')}
                 </button>
               </div>
             </AnimatedSection>
@@ -135,10 +137,10 @@ const Home = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
             {[
-              { value: "20+", label: "Team Members" },
-              { value: "2", label: "Race Cars Built" },
-              { value: "5+", label: "Competitions" },
-              { value: "3", label: "Continents" }
+              { value: "20+", label: t('home.stats.teamMembers') },
+              { value: "2", label: t('home.stats.raceCars') },
+              { value: "5+", label: t('home.stats.competitions') },
+              { value: "3", label: t('home.stats.continents') }
             ].map((stat, index) => (
               <AnimatedSection key={index} delay={index * 100} direction="up">
                 <div>
@@ -155,10 +157,10 @@ const Home = () => {
       <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-24">
         <AnimatedSection delay={0}>
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Our Achievements</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{t('home.achievementsTitle')}</h2>
             <div className="w-16 sm:w-24 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
             <p className="text-base sm:text-lg text-base-content/70 max-w-2xl mx-auto">
-              Pushing the limits of engineering excellence in competitive racing
+              {t('home.achievementsSubtitle')}
             </p>
           </div>
         </AnimatedSection>
@@ -189,10 +191,10 @@ const Home = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <AnimatedSection delay={0}>
             <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Core Values</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{t('home.coreValuesTitle')}</h2>
               <div className="w-16 sm:w-24 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
               <p className="text-base sm:text-lg text-base-content/70 max-w-2xl mx-auto">
-                The principles that drive our success on and off the track
+                {t('home.coreValuesSubtitle')}
               </p>
             </div>
           </AnimatedSection>
@@ -219,10 +221,10 @@ const Home = () => {
       <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-24">
         <AnimatedSection delay={0}>
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Trusted Partners</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{t('home.partnersTitle')}</h2>
             <div className="w-16 sm:w-24 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
             <p className="text-base sm:text-lg text-base-content/70 max-w-2xl mx-auto">
-              Building lasting relationships with industry leaders
+              {t('home.partnersSubtitle')}
             </p>
           </div>
         </AnimatedSection>
@@ -262,12 +264,12 @@ const Home = () => {
         <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center relative z-10">
           <AnimatedSection delay={0}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6">
-              Ready to Join the Race?
+              {t('home.ctaTitle')}
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={200}>
             <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 max-w-3xl mx-auto text-primary-content/90">
-              Become part of a legacy of engineering excellence. Whether you're a student, sponsor, or enthusiast, there's a place for you in our team.
+              {t('home.ctaDescription')}
             </p>
           </AnimatedSection>
           <AnimatedSection delay={400}>
@@ -276,13 +278,13 @@ const Home = () => {
                 href="/contact"
                 className="btn bg-base-100 btn-md sm:btn-lg px-6 sm:px-10 font-bold"
               >
-                Become a Sponsor
+                {t('home.cta.becomeSponsor')}
               </a>
               <a
                 href="/join"
                 className="btn btn-primary btn-md sm:btn-lg px-6 sm:px-10 font-bold border-none hover:bg-accent/80 hover:text-primary-content"
               >
-                Join Our Team
+                {t('home.cta.joinOurTeam')}
               </a>
             </div>
           </AnimatedSection>

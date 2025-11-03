@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { FaTrophy, FaFlag, FaQuoteLeft, FaPlay, FaPause } from 'react-icons/fa';
 import { useTheme } from "../../../theme-manager/ThemeContext";
 import AnimatedSection from "../../../components/animate/AnimatedSection";
+import { useTranslation } from 'react-i18next';
 
 const History = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const [activeYear, setActiveYear] = useState(2018);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -24,65 +26,89 @@ const History = () => {
   const timelineEvents = [
     {
       year: 2018,
-      title: "Team Foundation",
-      description: "Our racing team was founded with just 5 passionate engineering students.",
+      title: t('history.events.2018.title'),
+      description: t('history.events.2018.description'),
       image: "https://picsum.photos/seed/history2018/800/600.jpg",
-      achievements: ["Team formed", "First concept design", "Initial sponsorship secured"]
+      achievements: [
+        t('history.events.2018.achievements.0'),
+        t('history.events.2018.achievements.1'),
+        t('history.events.2018.achievements.2')
+      ]
     },
     {
       year: 2019,
-      title: "First Competition",
-      description: "We built our first race car and competed in the regional Formula Student competition.",
+      title: t('history.events.2019.title'),
+      description: t('history.events.2019.description'),
       image: "https://picsum.photos/seed/history2019/800/600.jpg",
-      achievements: ["First car built", "Finished 12th in regional competition", "Expanded team to 15 members"]
+      achievements: [
+        t('history.events.2019.achievements.0'),
+        t('history.events.2019.achievements.1'),
+        t('history.events.2019.achievements.2')
+      ]
     },
     {
       year: 2020,
-      title: "Virtual Racing",
-      description: "Due to the pandemic, we shifted to virtual competitions and simulation development.",
+      title: t('history.events.2020.title'),
+      description: t('history.events.2020.description'),
       image: "https://picsum.photos/seed/history2020/800/600.jpg",
-      achievements: ["Won virtual design award", "Developed advanced simulation", "Online training program"]
+      achievements: [
+        t('history.events.2020.achievements.0'),
+        t('history.events.2020.achievements.1'),
+        t('history.events.2020.achievements.2')
+      ]
     },
     {
       year: 2021,
-      title: "Comeback Season",
-      description: "Returned to in-person competitions with our most advanced car yet.",
+      title: t('history.events.2021.title'),
+      description: t('history.events.2021.description'),
       image: "https://picsum.photos/seed/history2021/800/600.jpg",
-      achievements: ["Finished 5th in national competition", "Best engineering design award", "Team expanded to 25 members"]
+      achievements: [
+        t('history.events.2021.achievements.0'),
+        t('history.events.2021.achievements.1'),
+        t('history.events.2021.achievements.2')
+      ]
     },
     {
       year: 2022,
-      title: "International Debut",
-      description: "We competed internationally for the first time, representing our university globally.",
+      title: t('history.events.2022.title'),
+      description: t('history.events.2022.description'),
       image: "https://picsum.photos/seed/history2022/800/600.jpg",
-      achievements: ["Competed in 3 countries", "Top 10 finish in international event", "Major corporate sponsorship"]
+      achievements: [
+        t('history.events.2022.achievements.0'),
+        t('history.events.2022.achievements.1'),
+        t('history.events.2022.achievements.2')
+      ]
     },
     {
       year: 2023,
-      title: "Championship Year",
-      description: "Our most successful year yet with multiple podium finishes and awards.",
+      title: t('history.events.2023.title'),
+      description: t('history.events.2023.description'),
       image: "https://picsum.photos/seed/history2023/800/600.jpg",
-      achievements: ["National championship winners", "Innovation award", "Team of 40+ members"]
+      achievements: [
+        t('history.events.2023.achievements.0'),
+        t('history.events.2023.achievements.1'),
+        t('history.events.2023.achievements.2')
+      ]
     }
   ];
 
   const testimonials = [
     {
-      name: "Alex Johnson",
-      role: "Founding Member & Team Lead (2018-2020)",
-      quote: "Starting this team from scratch was challenging but incredibly rewarding. Seeing how far we've come makes me proud of what we built together.",
+      name: t('history.testimonials.0.name'),
+      role: t('history.testimonials.0.role'),
+      quote: t('history.testimonials.0.quote'),
       image: "https://picsum.photos/seed/alumni1/200/200.jpg"
     },
     {
-      name: "Sarah Chen",
-      role: "Chief Engineer (2020-2022)",
-      quote: "The pandemic tested our resilience, but we adapted and came back stronger. Our virtual design win in 2020 was a turning point for the team.",
+      name: t('history.testimonials.1.name'),
+      role: t('history.testimonials.1.role'),
+      quote: t('history.testimonials.1.quote'),
       image: "https://picsum.photos/seed/alumni2/200/200.jpg"
     },
     {
-      name: "Michael Rodriguez",
-      role: "Team Captain (2022-2023)",
-      quote: "Leading the team to our first championship was the highlight of my university experience. The skills I gained have been invaluable in my career.",
+      name: t('history.testimonials.2.name'),
+      role: t('history.testimonials.2.role'),
+      quote: t('history.testimonials.2.quote'),
       image: "https://picsum.photos/seed/alumni3/200/200.jpg"
     }
   ];
@@ -100,14 +126,14 @@ const History = () => {
             <div className="max-w-4xl mx-auto">
               <div className="inline-block mb-4">
                 <span className="px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm">
-                  OUR JOURNEY
+                  {t('history.badge')}
                 </span>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
-                Racing Through History
+                {t('history.heroTitle')}
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
-                From a small group of passionate students to a championship-winning team, discover our journey of innovation, teamwork, and racing excellence.
+                {t('history.heroDescription')}
               </p>
             </div>
           </AnimatedSection>
@@ -118,9 +144,9 @@ const History = () => {
       <div className="container mx-auto px-4 sm:px-6 py-8">
         <AnimatedSection direction="up" delay={100}>
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Timeline</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">{t('history.timelineTitle')}</h2>
             <p className="text-base-content/70 max-w-2xl mx-auto">
-              Navigate through our history to see key milestones and achievements
+              {t('history.timelineDescription')}
             </p>
           </div>
         </AnimatedSection>
@@ -130,7 +156,7 @@ const History = () => {
           <div className="lg:w-1/4">
             <div className="sticky top-8">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold">Years</h3>
+                <h3 className="text-xl font-bold">{t('history.yearsLabel')}</h3>
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
                   className="btn btn-circle btn-sm btn-primary"
@@ -178,7 +204,7 @@ const History = () => {
                     {timelineEvents.find(e => e.year === activeYear).description}
                   </p>
                   <div className="divider"></div>
-                  <h4 className="font-bold text-lg mb-3">Key Achievements</h4>
+                  <h4 className="font-bold text-lg mb-3">{t('history.keyAchievementsTitle')}</h4>
                   <ul className="space-y-2">
                     {timelineEvents.find(e => e.year === activeYear).achievements.map((achievement, index) => (
                       <li key={index} className="flex items-start">

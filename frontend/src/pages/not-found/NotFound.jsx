@@ -2,9 +2,11 @@ import { FaArrowRight, FaHome, FaTachometerAlt, FaSearch } from "react-icons/fa"
 import AnimatedSection from "../../components/animate/AnimatedSection";
 import { useTheme } from "../../theme-manager/ThemeContext";
 import { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 
 const NotFound = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const [speed, setSpeed] = useState(0);
   const [factIndex, setFactIndex] = useState(0);
 
@@ -80,7 +82,7 @@ const NotFound = () => {
             <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-primary/10 border border-primary/20 rounded-full backdrop-blur-sm animate-pulse">
               <div className="w-2 h-2 bg-primary rounded-full"></div>
               <span className="text-xs sm:text-sm font-bold text-primary uppercase tracking-wider text-center">
-                Pit Stop Required
+                {t('notFound.statusBadge')}
               </span>
             </div>
           </div>
@@ -133,12 +135,12 @@ const NotFound = () => {
 
         {/* Message */}
         <AnimatedSection direction="up" delay={300}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-center text-base-content">Out of Track</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-center text-base-content">{t('notFound.title')}</h2>
         </AnimatedSection>
 
         <AnimatedSection direction="up" delay={400}>
           <p className="text-base sm:text-lg md:text-xl text-base-content/90 max-w-2xl mx-auto text-center mb-6 sm:mb-8 px-2">
-            Looks like you've gone off the racing line! This page might be in the garage for repairs or has been retired from the circuit.
+            {t('notFound.message')}
           </p>
         </AnimatedSection>
 
@@ -148,7 +150,7 @@ const NotFound = () => {
             <div className="bg-base-200/70 backdrop-blur-sm rounded-2xl p-4 sm:p-5 shadow-2xl shadow-black/50 flex flex-col items-center text-center space-y-2">
               <div className="flex flex-row items-center gap-1 sm:gap-2">
                 <FaTachometerAlt className="text-xl sm:text-2xl text-primary" />
-                <h3 className="font-bold text-base sm:text-lg text-primary m-0">F1 Fact</h3>
+                <h3 className="font-bold text-base sm:text-lg text-primary m-0">{t('notFound.f1FactTitle')}</h3>
               </div>
 
               <div className="flex items-center justify-center h-[3.5rem] sm:h-[4rem]">
@@ -177,7 +179,7 @@ const NotFound = () => {
               className="group relative inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-primary text-primary-content rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden"
             >
               <FaHome className="relative z-10 text-sm sm:text-base" />
-              <span className="relative z-10">Return to Pit Lane</span>
+              <span className="relative z-10">{t('notFound.returnButton')}</span>
               <FaArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform text-sm sm:text-base" />
               <div className="absolute inset-0 bg-gradient-to-r from-primary-focus to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
@@ -187,7 +189,7 @@ const NotFound = () => {
               className="group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-base-200/80 text-base-content rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:bg-base-300 border border-base-300 backdrop-blur-sm"
             >
               <FaSearch className="text-sm sm:text-base" />
-              <span>Search Circuit</span>
+              <span>{t('notFound.searchButton')}</span>
             </button>
           </div>
         </AnimatedSection>

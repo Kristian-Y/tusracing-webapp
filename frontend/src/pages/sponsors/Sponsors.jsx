@@ -4,18 +4,23 @@ import {
   FaHandshake, FaTrophy, FaCheckCircle, FaCrown, FaMedal, FaGem
 } from 'react-icons/fa';
 import { useTheme } from "../../theme-manager/ThemeContext";
+import { useTranslation } from 'react-i18next';
 import AnimatedSection from "../../components/animate/AnimatedSection";
 import toast, { Toaster } from 'react-hot-toast';
 import api from '../../api/axios';
 // Initial sponsor tiers (module-level so identity is stable for hooks)
-const INITIAL_SPONSOR_TIERS = [
-  { id: "title", name: "Title Sponsor", icon: <FaCrown />, color: "primary", description: "Our premier partners who drive our success", sponsors: [] },
-  { id: "gold", name: "Gold Sponsor", icon: <FaTrophy />, color: "warning", description: "Major contributors to our racing excellence", sponsors: [] },
-  { id: "bronze", name: "Bronze Sponsor", icon: <FaGem />, color: "accent", description: "Essential partners in our racing ecosystem", sponsors: [] }
+const getTierTranslations = (t) => [
+  { id: "title", name: t('sponsors.tiers.title.name'), icon: <FaCrown />, color: "primary", description: t('sponsors.tiers.title.description'), sponsors: [] },
+  { id: "gold", name: t('sponsors.tiers.gold.name'), icon: <FaTrophy />, color: "warning", description: t('sponsors.tiers.gold.description'), sponsors: [] },
+  { id: "bronze", name: t('sponsors.tiers.bronze.name'), icon: <FaGem />, color: "accent", description: t('sponsors.tiers.bronze.description'), sponsors: [] }
 ];
+
+const INITIAL_SPONSOR_TIERS = getTierTranslations(key => key);
 
 const Sponsors = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
+  const [sponsorTiers, setSponsorTiers] = useState(getTierTranslations(t));
   const [formData, setFormData] = useState({
     companyName: "",
     contactPersonnames: "",
@@ -46,16 +51,13 @@ const Sponsors = () => {
     }
   };
 
-  // keep sponsor tiers in state so we can update them without mutating module constants
-  const [sponsorTiers, setSponsorTiers] = useState(INITIAL_SPONSOR_TIERS);
-
   // fetch sponsors on component mount
   useEffect(() => {
     const fetchSponsors = async () => {
       try {
         const response = await api.get('/sponsors');
         // create a fresh copy of the tiers and populate sponsors without mutating initial data
-        const newTiers = INITIAL_SPONSOR_TIERS.map(t => ({ ...t, sponsors: [] }));
+        const newTiers = getTierTranslations(t).map(t => ({ ...t, sponsors: [] }));
         response.data.forEach(element => {
           console.log('Processing sponsor:', element);
           const tier = newTiers.find(t => t.id === element.type);
@@ -83,22 +85,22 @@ const Sponsors = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.companyName.trim()) newErrors.companyName = "Company name is required";
-    else if (formData.companyName.length < 2) newErrors.companyName = "Company name must be at least 2 characters";
+    if (!formData.companyName.trim()) newErrors.companyName = `${t('sponsors.form.labels.companyName')} ${t('forms.validation.required')}`;
+    else if (formData.companyName.length < 2) newErrors.companyName = t('forms.validation.minChars', { count: 2 });
 
-    if (!formData.contactPersonnames.trim()) newErrors.contactPersonnames = "Contact person name is required";
-    else if (formData.contactPersonnames.length < 2) newErrors.contactPersonnames = "Name must be at least 2 characters";
+    if (!formData.contactPersonnames.trim()) newErrors.contactPersonnames = `${t('sponsors.form.labels.contactPerson')} ${t('forms.validation.required')}`;
+    else if (formData.contactPersonnames.length < 2) newErrors.contactPersonnames = t('forms.validation.minChars', { count: 2 });
 
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    else if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = "Email is invalid";
+    if (!formData.email.trim()) newErrors.email = `${t('sponsors.form.labels.email')} ${t('forms.validation.required')}`;
+    else if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = t('forms.validation.invalidEmail');
 
-    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
-    else if (!/^[+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/.test(formData.phone)) newErrors.phone = "Phone number is invalid";
+    if (!formData.phone.trim()) newErrors.phone = `${t('sponsors.form.labels.phone')} ${t('forms.validation.required')}`;
+    else if (!/^[+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/.test(formData.phone)) newErrors.phone = t('forms.validation.invalidPhone');
 
-    if (!formData.description.trim()) newErrors.description = "Description is required";
-    else if (formData.description.length < 20) newErrors.description = "Please provide more details (min 20 characters)";
+    if (!formData.description.trim()) newErrors.description = `${t('sponsors.form.labels.description')} ${t('forms.validation.required')}`;
+    else if (formData.description.length < 20) newErrors.description = t('forms.validation.minChars', { count: 20 });
 
-    if (!formData.tier.trim()) newErrors.tier = "Sponsorship tier is required";
+    if (!formData.tier.trim()) newErrors.tier = `${t('sponsors.form.labels.tier')} ${t('forms.validation.required')}`;
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -120,7 +122,7 @@ const Sponsors = () => {
       setTimeout(() => {
         setIsSubmitting(false);
         setShowSuccess(true);
-        toast.success('Your sponsorship inquiry has been submitted successfully! We\'ll get back to you soon.', {
+          toast.success(t('sponsors.form.successMessage'), {
           duration: 5000,
           position: 'top-center',
           style: {
@@ -166,15 +168,15 @@ const Sponsors = () => {
             <div className="max-w-4xl mx-auto">
               <div className="inline-block mb-4">
                 <span className="px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm">
-                  PARTNER WITH US
+                  {t('sponsors.heroBadge')}
                 </span>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
-                Drive Success With
-                <span className="block">TU Sofia Racing</span>
+                {t('sponsors.heroTitle')}
+                <span className="block">{t('sponsors.heroTitleSuffix')}</span>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
-                Join our elite circle of partners and help us shape the future of motorsport engineering
+                {t('sponsors.heroDescription')}
               </p>
             </div>
           </AnimatedSection>
@@ -186,10 +188,10 @@ const Sponsors = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <AnimatedSection direction="up" delay={200}>
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Our Valued Partners</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{t('sponsors.showcaseTitle')}</h2>
               <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
               <p className="text-base sm:text-lg text-base-content/70 max-w-3xl mx-auto">
-                We're proud to collaborate with industry leaders who share our passion for innovation and excellence
+                {t('sponsors.showcaseDescription')}
               </p>
             </div>
           </AnimatedSection>
@@ -212,7 +214,7 @@ const Sponsors = () => {
                       </div>
                       <div className="text-center md:text-right">
                         <div className="text-3xl md:text-4xl font-bold text-white">{tier.sponsors.length}</div>
-                        <div className="text-sm text-primary-content/80">Partners</div>
+                        <div className="text-sm text-primary-content/80">{t('sponsors.partnersLabel')}</div>
                       </div>
                     </div>
                   </div>
@@ -245,10 +247,10 @@ const Sponsors = () => {
           <div className="max-w-4xl mx-auto">
             <AnimatedSection direction="up" delay={200}>
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Become Our Partner</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{t('sponsors.becomePartnerTitle')}</h2>
                 <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
                 <p className="text-base sm:text-lg text-base-content/70 max-w-2xl mx-auto">
-                  Ready to accelerate your brand with us? Fill out the form below and let's create something amazing together
+                  {t('sponsors.becomePartnerDescription')}
                 </p>
               </div>
             </AnimatedSection>
@@ -257,7 +259,7 @@ const Sponsors = () => {
             <AnimatedSection direction="up" delay={200}>
               <div className="mb-8">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium">Application Progress</span>
+                  <span className="text-sm font-medium">{t('sponsors.form.applicationProgress')}</span>
                   <span className="text-sm font-medium">{formProgress}%</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
@@ -279,8 +281,8 @@ const Sponsors = () => {
                       <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-success/20 mb-6 animate-pulse">
                         <FaCheckCircle className="text-5xl text-success" />
                       </div>
-                      <h2 className="text-3xl font-bold mb-4">Sponsorship Inquiry Submitted!</h2>
-                      <p className="text-lg mb-6">Thank you for your interest in sponsoring our team. We'll review your information and get back to you soon.</p>
+                      <h2 className="text-3xl font-bold mb-4">{t('sponsors.form.successTitle')}</h2>
+                      <p className="text-lg mb-6">{t('sponsors.form.successMessage')}</p>
                       <div className="flex justify-center">
                         <FaHandshake className="text-4xl text-primary animate-bounce" />
                       </div>
@@ -290,12 +292,12 @@ const Sponsors = () => {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Company Name */}
                         <div className={`form-control transform transition-all duration-300 ${activeField === "companyName" ? "scale-105" : ""}`}>
-                          <label className="label">
-                            <span className="label-text font-medium flex items-center">
-                              <FaBuilding className="mr-2 text-accent" />
-                              Company Name
-                            </span>
-                          </label>
+                              <label className="label">
+                                <span className="label-text font-medium flex items-center">
+                                  <FaBuilding className="mr-2 text-accent" />
+                                  {t('sponsors.form.labels.companyName')}
+                                </span>
+                              </label>
                           <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} placeholder="e.g., SpeedTech Motors"
                             className={`input input-bordered w-full rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 placeholder:text-base-content/40 ${errors.companyName ? 'input-error border-error' : ''}`} />
                           {errors.companyName && (
@@ -308,7 +310,7 @@ const Sponsors = () => {
                           <label className="label">
                             <span className="label-text font-medium flex items-center">
                               <FaUser className="mr-2 text-accent" />
-                              Contact Person
+                              {t('sponsors.form.labels.contactPerson')}
                             </span>
                           </label>
                           <input type="text" name="contactPersonnames" value={formData.contactPersonnames} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} placeholder="e.g., John Smith"
@@ -323,7 +325,7 @@ const Sponsors = () => {
                           <label className="label">
                             <span className="label-text font-medium flex items-center">
                               <FaEnvelope className="mr-2 text-primary" />
-                              Email
+                              {t('sponsors.form.labels.email')}
                             </span>
                           </label>
                           <input type="email" name="email" value={formData.email} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} placeholder="e.g., contact@speedtech.com"
@@ -338,7 +340,7 @@ const Sponsors = () => {
                           <label className="label">
                             <span className="label-text font-medium flex items-center">
                               <FaPhone className="mr-2 text-primary" />
-                              Phone Number
+                              {t('sponsors.form.labels.phone')}
                             </span>
                           </label>
                           <input type="tel" name="phone" value={formData.phone} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} placeholder="e.g., +359 888 123 456"
@@ -353,15 +355,15 @@ const Sponsors = () => {
                           <label className="label">
                             <span className="label-text font-medium flex items-center">
                               <FaTrophy className="mr-2 text-warning" />
-                              Sponsorship Tier
+                              {t('sponsors.form.labels.tier')}
                             </span>
                           </label>
                           <select name="tier" value={formData.tier} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur}
                             className={`select select-bordered w-full rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 ${errors.tier ? 'select-error border-error' : ''}`}>
-                            <option value="" disabled>Select a sponsorship tier</option>
+                            <option value="" disabled>{t('sponsors.form.selectTierPlaceholder')}</option>
                             {sponsorTiers.map((tier) => <option key={tier.id} value={tier.name}>{tier.name}</option>)}
                           </select>
-                          {<span className="label-text-alt mt-1 text-base-content/50">You can also click on a tier above to auto select it</span>}
+                          {<span className="label-text-alt mt-1 text-base-content/50">{t('sponsors.form.tierHint')}</span>}
                           {errors.tier && (
                             <span className={`text-sm mt-1 ${theme === 'darkTheme' ? 'text-red-400' : 'text-error'}`}>{errors.tier}</span>
                           )}
@@ -372,7 +374,7 @@ const Sponsors = () => {
                           <label className="label">
                             <span className="label-text font-medium flex items-center">
                               <FaFileAlt className="mr-2 text-info" />
-                              Sponsorship Details
+                              {t('sponsors.form.labels.description')}
                             </span>
                           </label>
                           <textarea name="description" value={formData.description} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} placeholder="Tell us about your company..."
@@ -385,7 +387,7 @@ const Sponsors = () => {
 
                       <div className="form-control mt-8">
                         <button type="submit" className={`btn btn-primary btn-lg rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ${isSubmitting ? 'loading' : ''}`} disabled={isSubmitting}>
-                          {isSubmitting ? 'Submitting...' : 'Submit Sponsorship Inquiry'}
+                          {isSubmitting ? t('sponsors.form.submitting') : t('sponsors.form.submit')}
                         </button>
                       </div>
                     </form>

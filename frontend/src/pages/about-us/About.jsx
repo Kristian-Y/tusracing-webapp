@@ -1,50 +1,16 @@
 import { useTheme } from "../../theme-manager/ThemeContext";
 import AnimatedSection from "../../components/animate/AnimatedSection";
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   const aboutCards = [
-    {
-      id: 1,
-      title: "Our Race Cars",
-      description:
-        "Our race cars are the result of cutting-edge engineering and meticulous design. Each car is built to perform at the highest level, combining speed, agility, and precision on the track.",
-      image: "/images/cars/car-on-track.jpg",
-      icon: "/images/icons/about-us/racecar.png",
-      color: "primary",
-      link: "/about/our-cars",
-    },
-    {
-      id: 2,
-      title: "Our Team",
-      description:
-        "Our team is made up of passionate individuals dedicated to excellence in engineering and motorsport. Together, we combine diverse skills to build high-performance racecars.",
-      image: "/images/team/team-photo.jpg",
-      icon: "/images/icons/about-us/team.png",
-      color: "primary",
-      link: "/about/our-team",
-    },
-    {
-      id: 3,
-      title: "Our History",
-      description:
-        "Our team began with a shared passion for motorsport and innovation. Over the years, we've grown into a respected force in Formula Student.",
-      image: "/images/cars/car-testing.jpg",
-      icon: "/images/icons/about-us/history.png",
-      color: "primary",
-      link: "/about/our-history",
-    },
-    {
-      id: 4,
-      title: "Join Us",
-      description:
-        "Apply now to join our Formula Student team and showcase your engineering skills. Be part of a dynamic project that combines innovation, teamwork, and racing.",
-      image: "/images/cars/join-team.jpg",
-      icon: "/images/icons/about-us/application.png",
-      color: "accent",
-      link: "/about/join-us",
-    },
+    { id: 1, key: 'ourRaceCars', image: "/images/cars/car-on-track.jpg", icon: "/images/icons/about-us/racecar.png", color: 'primary', link: "/about/our-cars" },
+    { id: 2, key: 'ourTeam', image: "/images/team/team-photo.jpg", icon: "/images/icons/about-us/team.png", color: 'primary', link: "/about/our-team" },
+    { id: 3, key: 'ourHistory', image: "/images/cars/car-testing.jpg", icon: "/images/icons/about-us/history.png", color: 'primary', link: "/about/our-history" },
+    { id: 4, key: 'joinUs', image: "/images/cars/join-team.jpg", icon: "/images/icons/about-us/application.png", color: 'accent', link: "/about/join-us" },
   ];
 
   return (
@@ -60,15 +26,14 @@ const About = () => {
             <div className="max-w-4xl mx-auto">
               <div className="inline-block mb-4">
                 <span className="px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm">
-                  ABOUT TU SOFIA RACING TEAM
+                  {t('about.badge')}
                 </span>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
-                Discover Our Journey
+                {t('about.heroTitle')}
               </h1>
               <p className="text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
-                Explore the heart of TU Sofia Racing Team — from our cutting-edge race cars
-                to the passionate individuals who make it all possible.
+                {t('about.heroDescription')}
               </p>
             </div>
           </AnimatedSection>
@@ -85,7 +50,7 @@ const About = () => {
                 <div className="relative h-64 overflow-hidden">
                   <img
                     src={card.image}
-                    alt={card.title}
+                    alt={t(`about.cards.${card.key}.title`)}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
@@ -101,11 +66,11 @@ const About = () => {
                 {/* Content */}
                 <div className="p-8">
                   <h3 className="text-2xl font-bold mb-3 text-base-content">
-                    {card.title}
+                    {t(`about.cards.${card.key}.title`)}
                   </h3>
                   <div className={`w-20 h-1 bg-${card.color} mb-4 rounded-full`}></div>
                   <p className="text-base-content/70 leading-relaxed mb-6">
-                    {card.description}
+                    {t(`about.cards.${card.key}.description`)}
                   </p>
 
                   {/* CTA Button */}
@@ -114,7 +79,7 @@ const About = () => {
                       href={card.link}
                       className={`inline-flex items-center gap-2 text-${card.color} font-semibold hover:gap-3 transition-all duration-300`}
                     >
-                      <span>Explore</span>
+                      <span>{t(`about.cards.${card.key}.cta`)}</span>
                       <svg
                         className="w-4 h-4"
                         fill="none"
@@ -150,22 +115,22 @@ const About = () => {
       {/* ================= CTA SECTION ================= */}
       <div className="container mx-auto px-6 py-20">
         <AnimatedSection direction="up" delay={200}>
-          <div className="text-center max-w-3xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Be Part of Our Story?
+              {t('about.ctaTitle')}
             </h2>
             <p className="text-lg text-base-content/70 mb-8">
-              Join us in our pursuit of engineering excellence and racing innovation.
+              {t('about.ctaDescription')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/join-us" className="btn btn-primary btn-lg px-8">
-                Join the Team
+                {t('about.ctaButtons.joinTheTeam')}
               </a>
               <a
                 href="/contact"
                 className="btn btn-outline text-primary-content bg-accent btn-lg px-8"
               >
-                Contact Us
+                {t('about.ctaButtons.contactUs')}
               </a>
             </div>
           </div>

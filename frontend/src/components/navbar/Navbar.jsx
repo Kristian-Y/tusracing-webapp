@@ -13,9 +13,9 @@ const Navbar = () => {
 
   const navItems = [
     { name: t("navbar.about"), href: "/about" },
-    { name: "Gallery", href: "/gallery" },
-    { name: "Contacts", href: "/contacts" },
-    { name: "Sponsors", href: "/sponsors" },
+    { name: t("navbar.gallery"), href: "/gallery" },
+    { name: t("navbar.contacts"), href: "/contacts" },
+    { name: t("navbar.sponsors"), href: "/sponsors" },
   ];
 
   useEffect(() => {

@@ -7,6 +7,49 @@
     "sponsors": "Sponsors"
   },
 
+  "sponsors": {
+    "heroBadge": "PARTNER WITH US",
+    "heroTitle": "Drive Success With",
+    "heroTitleSuffix": "TU Sofia Racing",
+    "heroDescription": "Join our elite circle of partners and help us shape the future of motorsport engineering",
+    "showcaseTitle": "Our Valued Partners",
+    "showcaseDescription": "We're proud to collaborate with industry leaders who share our passion for innovation and excellence",
+    "partnersLabel": "Partners",
+    "becomePartnerTitle": "Become Our Partner",
+    "becomePartnerDescription": "Ready to accelerate your brand with us? Fill out the form below and let's create something amazing together",
+    "tiers": {
+      "title": {
+        "name": "Title Sponsor",
+        "description": "Our premier partners who drive our success"
+      },
+      "gold": {
+        "name": "Gold Sponsor",
+        "description": "Major contributors to our racing excellence"
+      },
+      "bronze": {
+        "name": "Bronze Sponsor",
+        "description": "Essential partners in our racing ecosystem"
+      }
+    },
+    "form": {
+      "applicationProgress": "Application Progress",
+      "submit": "Submit Sponsorship Inquiry",
+      "submitting": "Submitting...",
+      "labels": {
+        "companyName": "Company Name",
+        "contactPerson": "Contact Person",
+        "email": "Email",
+        "phone": "Phone Number",
+        "tier": "Sponsorship Tier",
+        "description": "Sponsorship Details"
+      },
+      "selectTierPlaceholder": "Select a sponsorship tier",
+      "tierHint": "You can also click on a tier above to auto select it",
+      "successTitle": "Sponsorship Inquiry Submitted!",
+      "successMessage": "Thank you for your interest in sponsoring our team. We'll review your information and get back to you soon."
+    }
+  },
+
   "home": {
     "since": "Since 2015",
     "titleLine1": "TU Sofia",
@@ -166,6 +209,13 @@
       "sending": "Sending...",
       "messageSentTitle": "Message Sent!",
       "messageSentDescription": "Thank you for your message. We'll get back to you soon."
+      ,
+      "placeholders": {
+        "firstName": "John Doe",
+        "email": "john@example.com",
+        "subject": "Sponsorship Inquiry",
+        "message": "Your message..."
+      }
     },
     "findUsTitle": "Find Us",
     "findUsMapTitle": "Our Location",
@@ -201,7 +251,21 @@
   "footer": {
     "about": "Engineering excellence on wheels. We're TU Sofia's premier Formula Student racing team, pushing the boundaries of innovation and performance.",
     "awards": "1 Award",
-    "carsBuilt": "3 Cars Built"
+    "carsBuilt": "3 Cars Built",
+    "quickLinks": {
+      "title": "Quick Links",
+      "home": "Home",
+      "about": "About",
+      "ourCars": "Our Cars",
+      "team": "Team",
+      "sponsors": "Sponsors",
+      "contact": "Contact"
+    },
+    "getInTouch": {
+      "title": "Get In Touch",
+      "headquarters": "Headquarters",
+      "address": "Block 9 of the Technical University of Sofia\n8 Kliment Ohridski Blvd., 1756 Sofia, Bulgaria"
+    }
   },
 
   "forms": {
@@ -222,5 +286,10 @@
     "applyNow": "Apply Now",
     "becomeSponsor": "Become a Sponsor",
     "joinOurTeam": "Join Our Team"
+  },
+
+  "services": {
+    "title": "Our Services",
+    "description": "Discover the services offered by FST Team."
   }
 }

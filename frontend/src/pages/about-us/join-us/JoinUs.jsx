@@ -3,9 +3,11 @@ import { FaUser, FaEnvelope, FaUniversity, FaGraduationCap, FaBook, FaCalendarAl
 import { useTheme } from "../../../theme-manager/ThemeContext";
 import AnimatedSection from "../../../components/animate/AnimatedSection";
 import toast, { Toaster } from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 const JoinUs = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -54,76 +56,76 @@ const JoinUs = () => {
 
     // First Name validation
     if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
+      newErrors.firstName = t('forms.validation.required');
     } else if (formData.firstName.length < 2) {
-      newErrors.firstName = "First name must be at least 2 characters";
+      newErrors.firstName = t('forms.validation.minChars', { count: 2 });
     }
 
     // Last Name validation
     if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
+      newErrors.lastName = t('forms.validation.required');
     } else if (formData.lastName.length < 2) {
-      newErrors.lastName = "Last name must be at least 2 characters";
+      newErrors.lastName = t('forms.validation.minChars', { count: 2 });
     }
 
     // Email validation
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = t('forms.validation.required');
     } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
+      newErrors.email = t('forms.validation.invalidEmail');
     }
 
     // Phone validation
     if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
+      newErrors.phone = t('forms.validation.required');
     } else if (!/^[+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/.test(formData.phone)) {
-      newErrors.phone = "Phone number is invalid";
+      newErrors.phone = t('forms.validation.invalidPhone');
     }
 
     // University validation
     if (!formData.university.trim()) {
-      newErrors.university = "University is required";
+      newErrors.university = t('forms.validation.required');
     }
 
     // Major validation
     if (!formData.major.trim()) {
-      newErrors.major = "Major is required";
+      newErrors.major = t('forms.validation.required');
     }
 
     // Graduation validation
     if (!formData.graduation) {
-      newErrors.graduation = "Please select your degree program";
+      newErrors.graduation = t('forms.validation.required');
     }
 
     // Course validation
     if (!formData.course) {
-      newErrors.course = "Please select your current year of study";
+      newErrors.course = t('forms.validation.required');
     }
 
     // Semester validation
     if (!formData.semester) {
-      newErrors.semester = "Semester is required";
+      newErrors.semester = t('forms.validation.required');
     } else if (isNaN(formData.semester) || parseInt(formData.semester) < 1 || parseInt(formData.semester) > 2) {
-      newErrors.semester = "Semester must be 1 or 2";
+      newErrors.semester = t('forms.validation.semesterRange');
     }
 
     // Skills validation
     if (!formData.skills.trim()) {
-      newErrors.skills = "Skills are required";
+      newErrors.skills = t('forms.validation.required');
     } else if (formData.skills.length < 10) {
-      newErrors.skills = "Please provide more details about your skills (min 10 characters)";
+      newErrors.skills = t('forms.validation.minChars', { count: 10 });
     }
 
     // Motivation validation
     if (!formData.motivation.trim()) {
-      newErrors.motivation = "Motivation is required";
+      newErrors.motivation = t('forms.validation.required');
     } else if (formData.motivation.length < 20) {
-      newErrors.motivation = "Please provide more details about your motivation (min 20 characters)";
+      newErrors.motivation = t('forms.validation.minChars', { count: 20 });
     }
 
     // Portfolio Link validation (optional but if provided must be valid)
     if (formData.portfolioLink && !/^https?:\/\/.+/.test(formData.portfolioLink)) {
-      newErrors.portfolioLink = "Portfolio link must be a valid URL (http:// or https://)";
+      newErrors.portfolioLink = t('forms.validation.invalidUrl');
     }
 
     setErrors(newErrors);
@@ -166,7 +168,7 @@ const JoinUs = () => {
         setShowSuccess(true);
         
         // Show success toast
-        toast.success('Your application has been submitted successfully! We\'ll get back to you soon.', {
+        toast.success(t('joinUs.form.successMessage'), {
           duration: 5000,
           position: 'top-center',
           style: {
@@ -234,14 +236,14 @@ const JoinUs = () => {
             <div className="max-w-4xl mx-auto">
               <div className="inline-block mb-4 relative">
                 <span className="px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm flex items-center">
-                  JOIN OUR TEAM
+                  {t('joinUs.badge')}
                 </span>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
-                Become Part of Our Racing Legacy
+                {t('joinUs.heroTitle')}
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
-                Join our team of passionate engineers and designers. Fill out the application form below to start your journey with TU Sofia Racing Team.
+                {t('joinUs.heroDescription')}
               </p>
               
             </div>
@@ -254,7 +256,7 @@ const JoinUs = () => {
         {/* Progress Bar */}
         <div className="max-w-4xl mx-auto mb-8">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium">Application Progress</span>
+            <span className="text-sm font-medium">{t('joinUs.applicationProgressLabel')}</span>
             <span className="text-sm font-medium">{formProgress}%</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
@@ -278,12 +280,12 @@ const JoinUs = () => {
               
               <div className="card-body p-6 sm:p-8">
                 {showSuccess ? (
-                  <div className="text-center py-12">
+                    <div className="text-center py-12">
                     <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-success/20 mb-6 animate-pulse">
                       <FaCheckCircle className="text-5xl text-success" />
                     </div>
-                    <h2 className="text-3xl font-bold mb-4">Application Submitted!</h2>
-                    <p className="text-lg mb-6">Thank you for your interest in joining our team. We'll review your application and get back to you soon.</p>
+                    <h2 className="text-3xl font-bold mb-4">{t('joinUs.form.successTitle')}</h2>
+                    <p className="text-lg mb-6">{t('joinUs.form.successMessage')}</p>
                     <div className="flex justify-center">
                       <FaRocket className="text-4xl text-primary animate-bounce" />
                     </div>
@@ -296,7 +298,7 @@ const JoinUs = () => {
                         <label className="label">
                           <span className="label-text font-medium flex items-center">
                             <FaUser className="mr-2 text-accent" />
-                            First Name
+                            {t('joinUs.form.firstName')}
                           </span>
                         </label>
                         <input
@@ -306,7 +308,7 @@ const JoinUs = () => {
                           onChange={handleChange}
                           onFocus={handleFocus}
                           onBlur={handleBlur}
-                          placeholder="e.g., John"
+                          placeholder={t('joinUs.placeholders.firstName')}
                           className={`input input-bordered w-full rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 placeholder:text-base-content/40 ${errors.firstName ? 'input-error border-error' : ''}`}
                         />
                         {errors.firstName && <label className="label-text-alt text-error mt-1">{errors.firstName}</label>}

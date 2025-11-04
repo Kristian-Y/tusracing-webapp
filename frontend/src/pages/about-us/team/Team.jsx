@@ -1,17 +1,19 @@
 import { FaInstagram, FaEnvelope, FaWrench, FaCog, FaBolt, FaPaintBrush } from 'react-icons/fa';
 import { useTheme } from "../../../theme-manager/ThemeContext";
 import AnimatedSection from "../../../components/animate/AnimatedSection";
+import { useTranslation } from 'react-i18next';
 
 const Team = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   const departments = [
     {
       id: 1,
-      name: "Chassis",
+      name: t('team.departments.chassis.name'),
       icon: <FaWrench />,
       color: "primary",
-      description: "Structural integrity and aerodynamic excellence",
+      description: t('team.departments.chassis.description'),
       members: [
         {
           id: 1,
@@ -176,14 +178,14 @@ const Team = () => {
             <div className="max-w-4xl mx-auto">
               <div className="inline-block mb-4">
                 <span className="px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm">
-                  OUR TEAM
+                  {t('team.badge')}
                 </span>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
-                Meet Our Racing Team
+                {t('team.heroTitle')}
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
-                Passionate students from diverse backgrounds working together to build championship-winning racing cars.
+                {t('team.heroDescription')}
               </p>
             </div>
           </AnimatedSection>
@@ -195,10 +197,10 @@ const Team = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
             {[
-              { value: "50+", label: "Team Members" },
-              { value: "4", label: "Departments" },
-              { value: "8", label: "Race Cars Built" },
-              { value: "15+", label: "Awards Won" }
+              { value: "50+", label: t('team.stats.teamMembers') },
+              { value: "4", label: t('team.stats.departments') },
+              { value: "8", label: t('team.stats.raceCars') },
+              { value: "15+", label: t('team.stats.awards') }
             ].map((stat, index) => (
               <AnimatedSection key={index} delay={index * 100} direction="up">
                 <div>
@@ -250,14 +252,14 @@ const Team = () => {
                           <a 
                             href={member.instagram}
                             className="w-7 h-7 sm:w-8 sm:h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-pink-500 hover:scale-110 transition-all duration-300"
-                            aria-label={`${member.name}'s Instagram`}
+                            aria-label={t('team.socialLinks.instagram', { name: member.name })}
                           >
                             <FaInstagram className="text-sm sm:text-base" />
                           </a>
                           <a 
                             href={`mailto:${member.email}`}
                             className="w-7 h-7 sm:w-8 sm:h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-blue-500 hover:scale-110 transition-all duration-300"
-                            aria-label={`Email ${member.name}`}
+                            aria-label={t('team.socialLinks.email', { name: member.name })}
                           >
                             <FaEnvelope className="text-xs sm:text-sm" />
                           </a>
@@ -287,12 +289,12 @@ const Team = () => {
         <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center relative z-10">
           <AnimatedSection delay={0}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6">
-              Want to Join Our Team?
+              {t('team.joinCtaTitle')}
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={200}>
             <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 max-w-3xl mx-auto text-primary-content/90">
-              We're always looking for passionate students to join our racing team. Whether you're an engineer, designer, or business student, there's a place for you.
+              {t('team.joinCtaDescription')}
             </p>
           </AnimatedSection>
           <AnimatedSection delay={400}>
@@ -300,7 +302,7 @@ const Team = () => {
               href="/join"
               className="btn bg-base-100 btn-md sm:btn-lg px-6 sm:px-10 font-bold text-primary hover:bg-accent hover:text-accent-content"
             >
-              Apply Now
+              {t('team.applyNow')}
             </a>
           </AnimatedSection>
         </div>

@@ -1,8 +1,10 @@
 import React from "react";
 import { FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaEnvelope, FaMapMarkerAlt, FaPhone, FaTrophy, FaFlagCheckered, FaTools } from "react-icons/fa";
 import AnimatedSection from "../animate/AnimatedSection";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="relative bg-gradient-to-br from-base-200 to-base-300 text-base-content overflow-hidden">
       {/* Decorative Elements */}
@@ -26,17 +28,16 @@ const Footer = () => {
                 />
               </div>
               <p className="text-base-content/80 mb-6 max-w-md text-center">
-                Engineering excellence on wheels. We're TU Sofia's premier Formula Student racing team,
-                pushing the boundaries of innovation and performance.
+                {t('footer.about')}
               </p>
               <div className="flex justify-around mb-6 w-full">
                 <div className="flex items-center gap-2">
                   <FaTrophy className="text-accent text-lg" />
-                  <span className="text-sm font-semibold">1 Award</span>
+                  <span className="text-sm font-semibold">{t('footer.awards')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <FaTools className="text-primary text-lg" />
-                  <span className="text-sm font-semibold">3 Cars Built</span>
+                  <span className="text-sm font-semibold">{t('footer.carsBuilt')}</span>
                 </div>
               </div>
             </div>
@@ -45,25 +46,25 @@ const Footer = () => {
           {/* Quick Links */}
           <AnimatedSection delay={150} direction="up">
             <div className="flex flex-col items-center">
-              <h4 className="text-xl font-bold mb-4 text-center">Quick Links</h4>
+              <h4 className="text-xl font-bold mb-4 text-center">{t('footer.quickLinks.title')}</h4>
               <div className="grid grid-cols-2 gap-3 w-full justify-items-center">
                 <a href="/" className="link link-hover flex items-center gap-2 text-sm">
-                  <span className="w-2 h-2 bg-primary rounded-full"></span> Home
+                  <span className="w-2 h-2 bg-primary rounded-full"></span> {t('footer.quickLinks.home')}
                 </a>
                 <a href="/about" className="link link-hover flex items-center gap-2 text-sm">
-                  <span className="w-2 h-2 bg-primary rounded-full"></span> About
+                  <span className="w-2 h-2 bg-primary rounded-full"></span> {t('footer.quickLinks.about')}
                 </a>
                 <a href="/cars" className="link link-hover flex items-center gap-2 text-sm">
-                  <span className="w-2 h-2 bg-primary rounded-full"></span> Our Cars
+                  <span className="w-2 h-2 bg-primary rounded-full"></span> {t('footer.quickLinks.ourCars')}
                 </a>
                 <a href="/team" className="link link-hover flex items-center gap-2 text-sm">
-                  <span className="w-2 h-2 bg-primary rounded-full"></span> Team
+                  <span className="w-2 h-2 bg-primary rounded-full"></span> {t('footer.quickLinks.team')}
                 </a>
                 <a href="/sponsors" className="link link-hover flex items-center gap-2 text-sm">
-                  <span className="w-2 h-2 bg-primary rounded-full"></span> Sponsors
+                  <span className="w-2 h-2 bg-primary rounded-full"></span> {t('footer.quickLinks.sponsors')}
                 </a>
                 <a href="/contact" className="link link-hover flex items-center gap-2 text-sm">
-                  <span className="w-2 h-2 bg-primary rounded-full"></span> Contact
+                  <span className="w-2 h-2 bg-primary rounded-full"></span> {t('footer.quickLinks.contact')}
                 </a>
               </div>
             </div>
@@ -75,16 +76,15 @@ const Footer = () => {
             <div className="flex flex-col items-center">
               <h4 className="text-xl font-bold mb-4 flex items-center gap-2 justify-center">
                 <FaEnvelope className="text-primary" />
-                Get In Touch
+                {t('footer.getInTouch.title')}
               </h4>
               <div className="bg-base-100 rounded-xl p-4 shadow-lg w-full max-w-md space-y-3">
                 <div className="flex items-center justify-center gap-3">
                   <FaMapMarkerAlt className="text-primary text-lg" />
                   <div className="text-center">
-                    <h5 className=" font-semibold">Headquarters</h5>
+                    <h5 className=" font-semibold">{t('footer.getInTouch.headquarters')}</h5>
                     <p className="text-sm text-base-content/70">
-                      Block 9 of the Technical University of Sofia<br />
-                      8 Kliment Ohridski Blvd., 1756 Sofia, Bulgaria
+                      {t('footer.getInTouch.address')}
                     </p>
                   </div>
                 </div>

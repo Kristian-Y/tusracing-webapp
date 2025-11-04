@@ -4,10 +4,12 @@ import { PiEngine } from "react-icons/pi";
 import { BsSpeedometer2, BsFuelPump } from 'react-icons/bs';
 import { useTheme } from "../../../theme-manager/ThemeContext";
 import AnimatedSection from "../../../components/animate/AnimatedSection";
+import { useTranslation } from 'react-i18next';
 
 
 const Cars = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   const carsData = [
     {
@@ -109,14 +111,14 @@ const Cars = () => {
             <div className="max-w-4xl mx-auto">
               <div className="inline-block mb-4">
                 <span className="px-4 py-2 bg-primary/10 text-primary font-semibold rounded-full text-sm">
-                  OUR CARS
+                  {t('cars.badge')}
                 </span>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent p-4">
-                Formula Student Racing Cars
+                {t('cars.pageTitle')}
               </h1>
               <p className="text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed">
-                Engineering excellence meets competitive racing. Explore our high-performance combustion engine vehicles designed and built by student engineers.
+                {t('cars.pageDescription')}
               </p>
             </div>
           </AnimatedSection>
@@ -152,7 +154,7 @@ const Cars = () => {
                   <div className="flex justify-center mb-4">
                     <div className="badge badge-outline badge-lg text-primary font-bold">
                       <PiEngine className="mr-2" />
-                      {car.engineType} Engine
+                      {car.engineType} {t('cars.engineBadge')}
                     </div>
                   </div>
 
@@ -162,7 +164,7 @@ const Cars = () => {
                       <div className="stat-figure text-primary">
                         <FaTachometerAlt />
                       </div>
-                      <div className="stat-title text-xs">Power</div>
+                      <div className="stat-title text-xs">{t('cars.power')}</div>
                       <div className="stat-value text-lg">{car.power}</div>
                     </div>
 
@@ -170,7 +172,7 @@ const Cars = () => {
                       <div className="stat-figure text-secondary">
                         <BsSpeedometer2 className='text-error' />
                       </div>
-                      <div className="stat-title text-xs">Top Speed</div>
+                      <div className="stat-title text-xs">{t('cars.topSpeed')}</div>
                       <div className="stat-value text-lg">{car.topSpeed}</div>
                     </div>
 
@@ -178,7 +180,7 @@ const Cars = () => {
                       <div className="stat-figure text-accent">
                         <GiSteeringWheel  />
                       </div>
-                      <div className="stat-title text-xs">Acceleration</div>
+                      <div className="stat-title text-xs">{t('cars.acceleration')}</div>
                       <div className="stat-value text-lg">{car.acceleration.split(' ')[0]}</div>
                     </div>
 
@@ -186,7 +188,7 @@ const Cars = () => {
                       <div className="stat-figure text-warning">
                         <FaWeight />
                       </div>
-                      <div className="stat-title text-xs">Weight</div>
+                      <div className="stat-title text-xs">{t('cars.weight')}</div>
                       <div className="stat-value text-lg">{car.weight}</div>
                     </div>
                   </div>
@@ -195,7 +197,7 @@ const Cars = () => {
                   <div className="collapse collapse-arrow bg-base-300 mb-4">
                     <input type="checkbox" />
                     <div className="collapse-title text-lg font-medium">
-                      Technical Specifications
+                      {t('cars.technicalSpecifications')}
                     </div>
                     <div className="collapse-content">
                       <div className="grid grid-cols-1 gap-3 mt-2">
@@ -229,7 +231,7 @@ const Cars = () => {
                     <div className="flex items-center mb-2">
                       <FaTrophy className="text-accent mr-2 text-lg" /> {/* Increased size */}
                       <div>
-                        <p className="text-xs text-base-content/70">Achievement</p>
+                        <p className="text-xs text-base-content/70">{t('cars.achievementLabel')}</p>
                         <p className="font-semibold text-sm">{car.achievements}</p>
                       </div>
                     </div>

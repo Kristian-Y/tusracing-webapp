@@ -7,27 +7,6 @@ import api from '../../api/axios';
 
 
 const Gallery = () => {
-  // Конвертира Google Drive линк към директен линк
-  const getDirectImageUrl = (url) => {
-    if (!url) return "https://via.placeholder.com/400x300?text=No+Image";
-    // usercontent.google.com/download?id=ID
-    const usercontentMatch = url.match(/drive\.usercontent\.google\.com\/download\?id=([\w-]+)/);
-    if (usercontentMatch) {
-      return `https://drive.google.com/uc?export=view&id=${usercontentMatch[1]}`;
-    }
-    // drive.google.com/file/d/ID/view
-    const fileMatch = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
-    if (fileMatch) {
-      return `https://drive.google.com/uc?export=view&id=${fileMatch[1]}`;
-    }
-    // drive.google.com/open?id=ID
-    const openMatch = url.match(/drive\.google\.com\/open\?id=([\w-]+)/);
-    if (openMatch) {
-      return `https://drive.google.com/uc?export=view&id=${openMatch[1]}`;
-    }
-    return url;
-  };
-
   const { theme } = useTheme();
   const { t } = useTranslation();
   const [albums, setAlbums] = useState([]);
@@ -39,7 +18,7 @@ const Gallery = () => {
   useEffect(() => {
     const fetchAlbums = async () => {
       try {
-        const response = await api.get('photos'); 
+        const response = await api.get('photos/albums/'); 
         const data = response.data;
         let albums_data = [];
         data.albums.forEach(album => {
@@ -111,7 +90,7 @@ const Gallery = () => {
 
   const  openAlbum = async (album) => {
     try {
-      const response = await api.get(`photos/${album.id}`);
+      const response = await api.get(`photos/albums/${album.id}`);
       const data = response.data;
       console.log('Fetched album images:', data.images);
       setSelectedImages(data.images);
@@ -220,7 +199,7 @@ const Gallery = () => {
               >
                 <div className="aspect-video relative overflow-hidden rounded-t-2xl">
                   <img
-                    src={getDirectImageUrl(album.coverImage)}
+                    src={album.coverImage}
                     alt={album.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />

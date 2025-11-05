@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full fixed top-0 z-50 backdrop-blur-md transition-colors duration-500 ${
+      className={`w-full fixed top-0 z-[100] backdrop-blur-md transition-colors duration-500 ${
         theme === "darkTheme"
           ? "bg-base-200/60 shadow-[0_2px_15px_rgba(255,255,255,0.15)]"
           : "bg-base-100/90 shadow-[0_2px_15px_rgba(0,0,0,0.25)]"

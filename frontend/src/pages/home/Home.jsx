@@ -104,12 +104,12 @@ const Home = () => {
 
             <AnimatedSection delay={600} direction="up">
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <button className="btn btn-primary btn-md sm:btn-lg px-6 sm:px-8 shadow-2xl hover:scale-105 transition-transform duration-300">
+                <a href="/about/our-cars" className="btn btn-primary btn-md sm:btn-lg px-6 sm:px-8 shadow-2xl hover:scale-105 transition-transform duration-300">
                   {t('home.buttons.ourCars')}
-                </button>
-                <button className="btn btn-md sm:btn-lg px-6 sm:px-8 hover:bg-accent hover:text-base-100 transition-all duration-300">
+                </a>
+                <a href="/about/join-us" className="btn btn-md sm:btn-lg px-6 sm:px-8 hover:bg-accent hover:text-base-100 transition-all duration-300">
                   {t('home.buttons.joinTeam')}
-                </button>
+                </a>
               </div>
             </AnimatedSection>
           </div>

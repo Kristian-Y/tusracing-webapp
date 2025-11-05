@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import AnimatedSection from "../../components/animate/AnimatedSection";
 import toast, { Toaster } from 'react-hot-toast';
 import api from '../../api/axios';
-// Initial sponsor tiers (module-level so identity is stable for hooks)
+
 const getTierTranslations = (t) => [
   { id: "title", name: t('sponsors.tiers.title.name'), icon: <FaCrown />, color: "primary", description: t('sponsors.tiers.title.description'), sponsors: [] },
   { id: "gold", name: t('sponsors.tiers.gold.name'), icon: <FaTrophy />, color: "warning", description: t('sponsors.tiers.gold.description'), sponsors: [] },
@@ -363,7 +363,6 @@ const Sponsors = () => {
                             <option value="" disabled>{t('sponsors.form.selectTierPlaceholder')}</option>
                             {sponsorTiers.map((tier) => <option key={tier.id} value={tier.name}>{tier.name}</option>)}
                           </select>
-                          {<span className="label-text-alt mt-1 text-base-content/50">{t('sponsors.form.tierHint')}</span>}
                           {errors.tier && (
                             <span className={`text-sm mt-1 ${theme === 'darkTheme' ? 'text-red-400' : 'text-error'}`}>{errors.tier}</span>
                           )}

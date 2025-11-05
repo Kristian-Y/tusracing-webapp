@@ -14,45 +14,45 @@ const Cars = () => {
   const carsData = [
     {
       id: 1,
-      name: "Thunderbolt X1",
-      year: 2023,
-      image: "https://picsum.photos/seed/formula1/800/600.jpg",
-      engine: "Honda CBR600RR",
-      engineType: "Combustion",
-      displacement: "599cc",
-      cylinders: "4",
-      power: "89 HP",
-      torque: "65 Nm",
-      weight: "210 kg",
-      acceleration: "0-100 km/h in 3.2s",
-      topSpeed: "140 km/h",
-      fuelSystem: "Electronic Fuel Injection",
-      transmission: "Sequential 6-speed",
-      chassis: "Carbon fiber monocoque",
-      aerodynamics: "Active wing system",
-      achievements: "1st Place - Formula Student Germany 2023",
-      innovations: "Carbon fiber monocoque, active aerodynamics"
+      name: "McLaren MCL39",
+      year: 2025,
+      image: "https://mclaren.bloomreach.io/delivery/resources/content/gallery/mclaren-racing/formula-1/2025/nsr/f1-75-live-m/web/mcl39-cover-image.jpg",
+      engine: "Mercedes-AMG F1 M14E Performance",
+      engineType: "Hybrid (Turbocharged V6 + ERS)",
+      displacement: "1.6 L",
+      cylinders: "6 (V6)",
+      power: "1050 HP",
+      torque: "900 Nm ",
+      weight: "798 kg",
+      acceleration: "0–100 km/h in 2.6 s",
+      topSpeed: "355 km/h",
+      fuelSystem: "Direct Fuel Injection (100 kg/h fuel flow limit)",
+      transmission: "8-speed sequential semi-automatic with reverse",
+      chassis: "Carbon fiber composite monocoque",
+      aerodynamics: "Ground-effect floor, active DRS rear wing, complex front wing and sidepod design",
+      achievements: "Multiple podium finishes in 2025 Formula One season (Lando Norris & Oscar Piastri)",
+      innovations: "Refined ground-effect aero, hybrid energy recovery (MGU-K & MGU-H), advanced cooling package"
     },
     {
       id: 2,
-      name: "Velocity Pro",
-      year: 2022,
-      image: "https://picsum.photos/seed/formula2/800/600.jpg",
-      engine: "KTM 690 LC4",
-      engineType: "Combustion",
-      displacement: "693cc",
-      cylinders: "1",
-      power: "75 HP",
-      torque: "69 Nm",
-      weight: "225 kg",
-      acceleration: "0-100 km/h in 3.5s",
-      topSpeed: "130 km/h",
-      fuelSystem: "Electronic Fuel Injection",
-      transmission: "Sequential 6-speed",
-      chassis: "Steel space frame",
-      aerodynamics: "Fixed wing system",
-      achievements: "2nd Place - Formula Student Italy 2022",
-      innovations: "Lightweight chassis, regenerative braking"
+      name: "Red Bull RB21",
+      year: 2025,
+      image: "https://images.ps-aws.com/c?url=https%3A%2F%2Fd3cm515ijfiu6w.cloudfront.net%2Fwp-content%2Fuploads%2F2024%2F09%2F13192030%2Fsergio-perez-baku-2024-red-bull-planetf1-1320x742.jpg",
+      engine: "Honda RBPTH003",
+      engineType: "Hybrid (Turbocharged V6 + ERS)",
+      displacement: "1.6 L",
+      cylinders: "6 (V6)",
+      power: "1020 HP",
+      torque: "—",
+      weight: "800 kg",
+      acceleration: "0–100 km/h in 2.6 s",
+      topSpeed: "360 km/h",
+      fuelSystem: "Direct Fuel Injection",
+      transmission: "8‑speed sequential semi‑automatic + reverse",
+      chassis: "Carbon fiber monocoque",
+      aerodynamics: "Ground‑effect floor, DRS rear wing, evolved cooling & sidepod design",
+      achievements: "Multiple wins & podiums in 2025 season",
+      innovations: "New aerodynamic upgrades, improved cooling, evolution of RB20 platform"
     },
     {
       id: 3,
@@ -154,76 +154,74 @@ const Cars = () => {
                   <div className="flex justify-center mb-4">
                     <div className="badge badge-outline badge-lg text-primary font-bold">
                       <PiEngine className="mr-2" />
-                      {car.engineType} {t('cars.engineBadge')}
+                      {t('cars.engineBadge')}
                     </div>
                   </div>
 
                   {/* Key Specifications */}
-                  <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="grid grid-cols-2 gap-4 mb-6 max-[460px]:grid-cols-1">
                     <div className="stat bg-base-300 rounded-lg p-3">
-                      <div className="stat-figure text-primary">
-                        <FaTachometerAlt />
+                      <div className="flex items-center justify-center mb-1">
+                        <div className="text-primary mr-2">
+                          <FaTachometerAlt />
+                        </div>
+                        <div className="stat-title text-xs">{t('cars.power')}</div>
                       </div>
-                      <div className="stat-title text-xs">{t('cars.power')}</div>
-                      <div className="stat-value text-lg">{car.power}</div>
+                      <div className="stat-value text-lg text-center">{car.power}</div>
                     </div>
 
                     <div className="stat bg-base-300 rounded-lg p-3">
-                      <div className="stat-figure text-secondary">
-                        <BsSpeedometer2 className='text-error' />
+                      <div className="flex items-center justify-center mb-1">
+                        <div className="text-error mr-2">
+                          <BsSpeedometer2 />
+                        </div>
+                        <div className="stat-title text-xs">{t('cars.topSpeed')}</div>
                       </div>
-                      <div className="stat-title text-xs">{t('cars.topSpeed')}</div>
-                      <div className="stat-value text-lg">{car.topSpeed}</div>
+                      <div className="stat-value text-lg text-center">{car.topSpeed}</div>
                     </div>
 
                     <div className="stat bg-base-300 rounded-lg p-3">
-                      <div className="stat-figure text-accent">
-                        <GiSteeringWheel  />
+                      <div className="flex items-center justify-center mb-1">
+                        <div className="text-accent mr-2">
+                          <GiSteeringWheel />
+                        </div>
+                        <div className="stat-title text-xs">{t('cars.acceleration')}</div>
                       </div>
-                      <div className="stat-title text-xs">{t('cars.acceleration')}</div>
-                      <div className="stat-value text-lg">{car.acceleration.split(' ')[0]}</div>
+                      <div className="stat-value text-lg text-wrap text-center">{car.acceleration}</div>
                     </div>
 
                     <div className="stat bg-base-300 rounded-lg p-3">
-                      <div className="stat-figure text-warning">
-                        <FaWeight />
+                      <div className="flex items-center justify-center mb-1">
+                        <div className="text-warning mr-2">
+                          <FaWeight />
+                        </div>
+                        <div className="stat-title text-xs">{t('cars.weight')}</div>
                       </div>
-                      <div className="stat-title text-xs">{t('cars.weight')}</div>
-                      <div className="stat-value text-lg">{car.weight}</div>
+                      <div className="stat-value text-lg text-center">{car.weight}</div>
                     </div>
                   </div>
 
                   {/* Technical Details */}
                   <div className="collapse collapse-arrow bg-base-300 mb-4">
                     <input type="checkbox" />
-                    <div className="collapse-title text-lg font-medium">
+                    <div className="collapse-title text-lg font-bold">
                       {t('cars.technicalSpecifications')}
                     </div>
-                    <div className="collapse-content">
-                      <div className="grid grid-cols-1 gap-3 mt-2">
-                        <div className="flex items-center">
-                          <FaCar className="text-secondary mr-2" />
-                          <span className="text-sm font-medium mr-2">Engine:</span>
-                          <span className="text-sm">{car.engine}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <FaGasPump className="text-secondary mr-2" />
-                          <span className="text-sm font-medium mr-2">Displacement:</span>
-                          <span className="text-sm">{car.displacement}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <FaCogs className="text-secondary mr-2" />
-                          <span className="text-sm font-medium mr-2">Transmission:</span>
-                          <span className="text-sm">{car.transmission}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <GiCarWheel className="text-secondary mr-2" />
-                          <span className="text-sm font-medium mr-2">Chassis:</span>
-                          <span className="text-sm">{car.chassis}</span>
-                        </div>
-                      </div>
+                    <div className="collapse-content space-y-2 mt-2">
+                      <p><FaCar className="inline text-primary mr-2" /><span className="font-bold">Engine:</span> {car.engine}</p>
+                      <p><PiEngine className="inline text-info mr-2" /><span className="font-bold">Engine Type:</span> {car.engineType}</p>
+                      <p><GiRaceCar className="inline text-orange-400 mr-2" /><span className="font-bold">Cylinders:</span> {car.cylinders}</p>
+                      <p><FaGasPump className="inline text-accent mr-2" /><span className="font-bold">Displacement:</span> {car.displacement}</p>
+                      <p><BsSpeedometer2 className="inline text-rose-400 mr-2" /><span className="font-bold">Torque:</span> {car.torque}</p>
+                      <p><BsFuelPump className="inline text-success mr-2" /><span className="font-bold">Fuel System:</span> {car.fuelSystem}</p>
+                      <p><FaCogs className="inline text-warning mr-2" /><span className="font-bold">Transmission:</span> {car.transmission}</p>
+                      <p><GiCarWheel className="inline text-error mr-2" /><span className="font-bold">Chassis:</span> {car.chassis}</p>
+                      <p><GiSteeringWheel className="inline text-cyan-400 mr-2" /><span className="font-bold">Aerodynamics:</span> {car.aerodynamics}</p>
+                      <p><FaTrophy className="inline text-amber-400 mr-2" /><span className="font-bold">Innovations:</span> {car.innovations}</p>
                     </div>
+
                   </div>
+
 
                   {/* Achievements and Innovations */}
                   <div className="divider"></div>

@@ -35,7 +35,7 @@ const Contacts = () => {
 
   // Calculate form progress
   useEffect(() => {
-    const filledFields = Object.values(formData).filter(value => 
+    const filledFields = Object.values(formData).filter(value =>
       value !== "" && value !== null
     ).length;
     const totalFields = Object.keys(formData).length;
@@ -106,12 +106,12 @@ const Contacts = () => {
 
     if (validateForm()) {
       setIsSubmitting(true);
-      
+
       // Simulate API call
       setTimeout(() => {
         setIsSubmitting(false);
         setShowSuccess(true);
-        
+
         // Show success toast
         toast.success(t('contacts.form.messageSentTitle') + ' ' + t('contacts.form.messageSentDescription'), {
           duration: 5000,
@@ -206,7 +206,7 @@ const Contacts = () => {
     <div className="min-h-[100vh] pt-8 bg-base-100 relative overflow-hidden">
       {/* Toast Container */}
       <Toaster />
-      
+
       {/* Animated Background Particles */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {particles.map(particle => (
@@ -231,7 +231,7 @@ const Contacts = () => {
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
 
-        <div className="relative container mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
+        <div className="relative container mx-auto mt-6 px-4 sm:px-6 py-16 sm:py-24 text-center ">
           <AnimatedSection direction="up" delay={100}>
             <div className="max-w-4xl mx-auto">
               <div className="inline-block mb-4">
@@ -257,7 +257,7 @@ const Contacts = () => {
             {contactMethods.map((method, index) => (
               <AnimatedSection key={method.id} direction="up" delay={100 + index * 100}>
                 <div>
-                  <a 
+                  <a
                     href={method.link || '#'}
                     className="block group transform transition-all duration-300 hover:scale-105"
                     target={method.link && method.link.startsWith('http') ? '_blank' : '_self'}
@@ -266,7 +266,7 @@ const Contacts = () => {
                     <div className="flex flex-col items-center">
                       <div className="text-2xl sm:text-3xl mb-2 text-primary-content transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">{method.icon}</div>
                       <div className="text-xs sm:text-sm uppercase tracking-wider opacity-90 mb-1">{method.name}</div>
-                      <div className="text-sm font-medium">{method.value}</div>
+                      <div className="text-sm font-medium break-all">{method.value}</div>
                     </div>
                   </a>
                 </div>
@@ -282,13 +282,13 @@ const Contacts = () => {
           {/* Contact Form */}
           <AnimatedSection direction="up" delay={200}>
             {/* Progress Bar */}
-              <div className="mb-6">
+            <div className="mb-6">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-sm font-medium">{t('contacts.form.formProgress')}</span>
                 <span className="text-sm font-medium">{formProgress}%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                <div 
+                <div
                   className="bg-gradient-to-r from-primary to-accent h-3 rounded-full transition-all duration-500 ease-out"
                   style={{ width: `${formProgress}%` }}
                 ></div>
@@ -297,20 +297,20 @@ const Contacts = () => {
 
             <div
               className={`card backdrop-blur-md bg-opacity-40 rounded-3xl overflow-hidden relative ${theme === 'darkTheme'
-                  ? 'bg-gray-900/50 shadow-[0_0_20px_rgba(255,255,255,0.2)]'
-                  : 'bg-white/50 shadow-[0_0_20px_rgba(0,0,0,0.2)]'
+                ? 'bg-gray-900/50 shadow-[0_0_20px_rgba(255,255,255,0.2)]'
+                : 'bg-white/50 shadow-[0_0_20px_rgba(0,0,0,0.2)]'
                 }`}
             >
               {/* Decorative Racing Elements */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary"></div>
-              
+
               <div className="card-body p-6 sm:p-8">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 flex items-center">
                   <FaPaperPlane className="mr-3 text-primary" />
                   {t('contacts.form.sendMessage')}
                 </h2>
-                
-                    {showSuccess ? (
+
+                {showSuccess ? (
                   <div className="text-center py-12">
                     <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-success/20 mb-6 animate-pulse">
                       <FaCheckCircle className="text-5xl text-success" />
@@ -334,13 +334,13 @@ const Contacts = () => {
                         onChange={handleInputChange}
                         onFocus={handleFocus}
                         onBlur={handleBlur}
-                          placeholder={t('contacts.form.placeholders.firstName') || 'John Doe'}
+                        placeholder={t('contacts.form.placeholders.firstName') || 'John Doe'}
                         className={`input input-bordered w-full rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 placeholder:text-base-content/40 ${errors.name ? 'input-error border-error' : ''}`}
                         required
                       />
                       {errors.name && <label className="label-text-alt text-error mt-1">{errors.name}</label>}
                     </div>
-                    
+
                     <div className={`form-control transform transition-all duration-300 ${activeField === "email" ? "scale-105" : ""}`}>
                       <label className="label">
                         <span className="label-text font-medium flex items-center">
@@ -361,7 +361,7 @@ const Contacts = () => {
                       />
                       {errors.email && <label className="label-text-alt text-error mt-1">{errors.email}</label>}
                     </div>
-                    
+
                     <div className={`form-control transform transition-all duration-300 ${activeField === "subject" ? "scale-105" : ""}`}>
                       <label className="label">
                         <span className="label-text font-medium">{t('contacts.form.subject')}</span>
@@ -379,7 +379,7 @@ const Contacts = () => {
                       />
                       {errors.subject && <label className="label-text-alt text-error mt-1">{errors.subject}</label>}
                     </div>
-                    
+
                     <div className={`form-control transform transition-all duration-300 ${activeField === "message" ? "scale-105" : ""}`}>
                       <label className="label">
                         <span className="label-text font-medium">Message</span>
@@ -396,9 +396,9 @@ const Contacts = () => {
                       ></textarea>
                       {errors.message && <label className="label-text-alt text-error mt-1">{errors.message}</label>}
                     </div>
-                    
-                    <button 
-                      type="submit" 
+
+                    <button
+                      type="submit"
                       className={`btn btn-primary w-full rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ${isSubmitting ? 'loading' : ''}`}
                       disabled={isSubmitting}
                     >
@@ -417,7 +417,7 @@ const Contacts = () => {
                 <FaHeadset className="mr-3 text-primary" />
                 Get In Touch
               </h2>
-              
+
               <div className="bg-base-200 rounded-xl p-6 sm:p-8 shadow-xl">
                 <div className="flex flex-col items-center text-center">
                   <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-4">
@@ -427,15 +427,20 @@ const Contacts = () => {
                   <p className="text-base-content/70 mb-4">
                     For all inquiries, please reach out to our team email. We'll direct your message to the right person.
                   </p>
-                  <a 
-                    href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=formulastudentbg@gmail.com" 
-                    className="text-primary hover:underline flex items-center justify-center text-lg font-medium"
-                  >
-                    <FaEnvelope className="mr-2" />
-                    formulastudentbg@gmail.com
-                  </a>
+
+                  {/* Wrap the link in a div */}
+                  <div className="max-w-full text-center break-all">
+                    <FaEnvelope className="inline mr-2 text-primary" />
+                    <a
+                      href="mailto:formulastudentbg@gmail.com"
+                      className="text-primary-content hover:underline text-lg font-medium "
+                    >
+                      formulastudentbg@gmail.com
+                    </a>
+                  </div>
                 </div>
               </div>
+
             </div>
           </AnimatedSection>
         </div>
@@ -449,7 +454,7 @@ const Contacts = () => {
                 Stay updated with our latest news, race results, and behind-the-scenes content.
               </p>
             </div>
-            
+
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
               {socialMedia.map((social) => (
                 <a

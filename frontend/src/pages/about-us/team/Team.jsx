@@ -10,7 +10,7 @@ const Team = () => {
   const departments = [
     {
       id: 1,
-      name: t('team.departments.chassis.name'),
+      name: "Zdrave Zhelaem",
       icon: <FaWrench />,
       color: "primary",
       description: t('team.departments.chassis.description'),
@@ -173,7 +173,7 @@ const Team = () => {
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
 
-        <div className="relative container mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
+        <div className="relative container mt-6 mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
           <AnimatedSection direction="up" delay={100}>
             <div className="max-w-4xl mx-auto">
               <div className="inline-block mb-4">

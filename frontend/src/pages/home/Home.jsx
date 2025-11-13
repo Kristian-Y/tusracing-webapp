@@ -98,7 +98,7 @@ const Home = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={400} direction="up">
-              <p className="ribbon text-white font-bold text-sm sm:text-lg md:text-xl lg:text-2xl brightness-70">
+              <p className="ribbon text-white font-bold text-sm sm:text-lg md:text-xl lg:text-2xl brightness-70 mb-2 mt-2">
                 {t('home.subtitle')}
               </p>
             </AnimatedSection>
@@ -166,25 +166,34 @@ const Home = () => {
           </div>
         </AnimatedSection>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {achievements.map((achievement, index) => (
-            <AnimatedSection key={achievement.title} delay={index * 150}>
-              <div className="group relative bg-gradient-to-br from-base-200 to-base-300 rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-primary/10 rounded-full -mr-12 -mt-12 sm:-mr-16 sm:-mt-16 group-hover:scale-150 transition-transform duration-700"></div>
-                <div className="relative z-10">
-                  <div className="text-4xl sm:text-6xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
-                    {achievement.icon}
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold mb-3">{achievement.title}</h3>
-                  <p className="text-sm sm:text-base text-base-content/70 mb-4">{achievement.description}</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-2xl sm:text-3xl font-black text-primary">{achievement.value}</span>
-                    <span className="text-xs sm:text-sm uppercase tracking-wider text-base-content/60">{achievement.label}</span>
-                  </div>
-                </div>
-              </div>
-            </AnimatedSection>
-          ))}
+    {achievements.map((achievement, index) => (
+      <AnimatedSection key={achievement.title} delay={index * 150}>
+        <div className="group relative bg-gradient-to-br from-base-200 to-base-300 rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col h-full">
+          {/* Decorative circle */}
+          <div className="absolute top-0 right-0 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 bg-primary/10 rounded-full -mr-10 -mt-10 sm:-mr-12 sm:-mt-12 md:-mr-16 md:-mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+          
+          <div className="relative z-10 flex flex-col flex-1">
+            {/* Icon */}
+            <div className="text-3xl sm:text-4xl md:text-6xl mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+              {achievement.icon}
+            </div>
+
+            {/* Title */}
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3">{achievement.title}</h3>
+
+            {/* Description */}
+            <p className="text-xs sm:text-sm md:text-base text-base-content/70 mb-3 flex-1">{achievement.description}</p>
+
+            {/* Value */}
+            <div className="flex flex-row items-baseline justify-start gap-2 mt-auto">
+              <span className="text-xl sm:text-2xl md:text-2xl font-black text-primary">{achievement.value}</span>
+              <span className="text-[10px] sm:text-xs md:text-sm uppercase tracking-wider text-base-content/60">{achievement.label}</span>
+            </div>
+          </div>
         </div>
+      </AnimatedSection>
+    ))}
+  </div>
       </div>
 
       {/* Team Values Section */}

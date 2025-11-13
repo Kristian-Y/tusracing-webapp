@@ -1,0 +1,26 @@
+#car-ribbon {
+  font-weight: bold;
+  color: #fff;
+
+  --r: .8em; /* control the cutout */
+  
+  border-block: .5em solid #0000;
+  padding-inline: .5em calc(var(--r) + .25em);
+  margin-left: 0px;
+  line-height: 1.8;
+
+  clip-path: polygon(
+    100% 0,
+    0 0,
+    0 100%,
+    100% 100%,
+    calc(100% - var(--r)) calc(100% - .25em),
+    100% 50%,
+    calc(100% - var(--r)) .25em
+  );
+
+  background:
+    theme('colors.info') padding-box; /* DaisyUI primary color */
+  
+  width: fit-content;
+}

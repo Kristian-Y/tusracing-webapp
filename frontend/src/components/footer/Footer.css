@@ -1,18 +1,24 @@
 .footer-ribbon {
-  --r: 0.8em; /* cutout size */
-
-  display: inline-block;       /* hug content width */
-  background-color: theme('colors.primary'); /* DaisyUI primary */
-  color: #fff;
-  font-weight: bold;
-  line-height: 1.8;
-  padding: 0.5rem calc(var(--r) + 0.75rem); /* vertical + horizontal padding */
+  --r: 0.6em; /* control the cutout of the ribbon */
+  --s: 1.8em; /* size of the folded part */
   
+  line-height: 1.8; 
+  padding-inline: 1lh;
+  border-block: var(--s) solid #0005;
+  background: theme("colors.info"); /* use theme color */
   clip-path: polygon(
-    100% 0,
-    var(--r) 0,
-    0 50%,
-    var(--r) 100%,
-    100% 100%
+    0 0,
+    1lh var(--r),          /* increased from .5lh to 1lh */
+    2lh 0,                 /* increased from 1lh to 2lh */
+    2lh var(--s),          /* match new fold width */
+    calc(100% - 1lh) var(--s),
+    100% calc(100% - var(--s)),
+    100% 100%,
+    calc(100% - 1lh) calc(100% - var(--r)), /* increased from .5lh to 1lh */
+    calc(100% - 2lh) 100%,                  /* increased from 1lh to 2lh */
+    calc(100% - 2lh) calc(100% - var(--s)),
+    1lh calc(100% - var(--s)),
+    0 var(--s)
   );
+  width: fit-content;
 }

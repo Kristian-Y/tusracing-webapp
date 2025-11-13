@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import AnimatedSection from "../../components/animate/AnimatedSection";
 import toast, { Toaster } from 'react-hot-toast';
 import api from '../../api/axios';
+import "./Sponsors.css"
 
 const getTierTranslations = (t) => [
   { id: "title", name: t('sponsors.tiers.title.name'), icon: <FaCrown />, color: "primary", description: t('sponsors.tiers.title.description'), sponsors: [] },
@@ -75,7 +76,7 @@ const Sponsors = () => {
 
     fetchSponsors();
   }, []);
- 
+
   // Calculate form progress
   useEffect(() => {
     const filledFields = Object.values(formData).filter(value => value !== "" && value !== null).length;
@@ -122,7 +123,7 @@ const Sponsors = () => {
       setTimeout(() => {
         setIsSubmitting(false);
         setShowSuccess(true);
-          toast.success(t('sponsors.form.successMessage'), {
+        toast.success(t('sponsors.form.successMessage'), {
           duration: 5000,
           position: 'top-center',
           style: {
@@ -145,7 +146,7 @@ const Sponsors = () => {
 
 
 
-  
+
 
   // const sponsorTiers = [
   //   { id: "title", name: "Title Sponsor", icon: <FaCrown />, color: "primary", description: "Our premier partners who drive our success", sponsors: [{ name: "SpeedTech Motors", logo: "https://picsum.photos/seed/speedtech/200/100.jpg" }, { name: "Racing Dynamics", logo: "https://picsum.photos/seed/racingdyn/200/100.jpg" }] },
@@ -188,7 +189,9 @@ const Sponsors = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <AnimatedSection direction="up" delay={200}>
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{t('sponsors.showcaseTitle')}</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+                <span id="ribbon">{t('sponsors.showcaseTitle')}</span>
+              </h2>
               <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
               <p className="text-base sm:text-lg text-base-content/70 max-w-3xl mx-auto">
                 {t('sponsors.showcaseDescription')}
@@ -201,7 +204,7 @@ const Sponsors = () => {
               <AnimatedSection key={tier.id} direction="up" delay={300 + tierIndex * 100}>
                 <div
                   className={`relative overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] cursor-pointer ${tierBg[theme === 'darkTheme' ? 'dark' : 'light'][tier.color || 'default']}`}
-                  // onClick={() => handleTierClick(tier)}
+                // onClick={() => handleTierClick(tier)}
                 >
                   <div className="p-6 text-primary-content">
                     <div className="flex flex-col md:flex-row items-center justify-between">
@@ -228,7 +231,7 @@ const Sponsors = () => {
                             </div>
                             <p className="text-center text-sm font-medium text-base-content/80 group-hover:text-primary transition-colors">
                               {sponsor.name}
-                            </p> 
+                            </p>
                           </div>
                         </a>
                       ))}
@@ -292,12 +295,12 @@ const Sponsors = () => {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Company Name */}
                         <div className={`form-control transform transition-all duration-300 ${activeField === "companyName" ? "scale-105" : ""}`}>
-                              <label className="label">
-                                <span className="label-text font-medium flex items-center">
-                                  <FaBuilding className="mr-2 text-accent" />
-                                  {t('sponsors.form.labels.companyName')}
-                                </span>
-                              </label>
+                          <label className="label">
+                            <span className="label-text font-medium flex items-center">
+                              <FaBuilding className="mr-2 text-accent" />
+                              {t('sponsors.form.labels.companyName')}
+                            </span>
+                          </label>
                           <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} placeholder="e.g., SpeedTech Motors"
                             className={`input input-bordered w-full rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 placeholder:text-base-content/40 ${errors.companyName ? 'input-error border-error' : ''}`} />
                           {errors.companyName && (

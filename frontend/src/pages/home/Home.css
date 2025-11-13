@@ -1,7 +1,7 @@
 .ribbon {
   --s: 1.8em; /* ribbon size */
-  --d: .8em;  /* depth */
-  --c: .8em;  /* cutout */
+  --d: 0.6em;  /* depth */
+  --c: 0.8em;  /* cutout */
   
   display: inline-block;
   padding: 0 calc(var(--s) + 0.5em) var(--d);
@@ -20,4 +20,5 @@
     var(--c) calc(50% + var(--d)/2)
   );
   background-color: theme('colors.primary'); /* Tailwind/DaisyUI primary color */
+  padding-bottom: 0.8em;
 }

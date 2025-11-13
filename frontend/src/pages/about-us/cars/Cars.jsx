@@ -152,11 +152,16 @@ const Cars = () => {
                 <div className="card-body p-6">
                   {/* Engine Type Badge */}
                   <div className="flex justify-center mb-4">
-                    <div className="badge badge-outline badge-lg text-primary font-bold">
-                      <PiEngine className="mr-2" />
-                      {t('cars.engineBadge')}
+                    <div className="inline-flex flex-wrap items-center justify-center border border-primary rounded-lg px-3 py-1 max-w-full">
+                      <div className="flex-shrink-0 mr-2">
+                        <PiEngine className='text-primary' />
+                      </div>
+                      <div className="whitespace-normal break-words text-primary font-bold text-sm md:text-md text-center">
+                        {t('cars.engineBadge')}
+                      </div>
                     </div>
                   </div>
+
 
                   {/* Key Specifications */}
                   <div className="grid grid-cols-2 gap-4 mb-6 max-[460px]:grid-cols-1">

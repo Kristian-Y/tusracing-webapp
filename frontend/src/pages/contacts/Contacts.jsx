@@ -4,6 +4,7 @@ import { useTheme } from "../../theme-manager/ThemeContext";
 import { useTranslation } from 'react-i18next';
 import AnimatedSection from "../../components/animate/AnimatedSection";
 import toast, { Toaster } from 'react-hot-toast';
+import "./Contacts.css"
 
 const Contacts = () => {
   const { theme } = useTheme();
@@ -448,8 +449,10 @@ const Contacts = () => {
         {/* Social Media Section - Added more spacing */}
         <div className="mt-20 sm:mt-24">
           <AnimatedSection direction="up" delay={400}>
-            <div className="text-center mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4">Follow Us on Social Media</h2>
+            <div className="flex flex-col items-center text-center mb-8">
+              <h2 id="social-ribbon" className="text-center text-2xl sm:text-3xl font-bold mb-4">
+                Follow Us on Social Media
+              </h2>
               <p className="text-base-content/70 max-w-2xl mx-auto">
                 Stay updated with our latest news, race results, and behind-the-scenes content.
               </p>

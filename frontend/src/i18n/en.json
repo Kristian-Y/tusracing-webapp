@@ -64,6 +64,40 @@
       "competitions": "Competitions",
       "continents": "Countries"
     },
+    "achievements": {
+      "competition": {
+        "title": "Competition Excellence",
+        "description": "Multiple podium finishes in Formula Student competitions across Europe.",
+        "award": "1",
+        "awardLabel": "Award Won"
+      },
+      "combustion": {
+        "title": "Engine Optimization",
+        "description": "Specialized in the optimization and maintenance of high-performance engines.",
+        "100": "0-100",
+        "100Label": "Under 4s"
+      },
+      "engineering": {
+        "title": "Engineering Expertise",
+        "description": "Development and refinement of chassis and aerodynamic components for maximum efficiency.",
+        "hp": "80+",
+        "hpLabel": "HP Output"
+      }
+    },
+    "teamValues": {
+      "precision": {
+        "title": "Precision Engineering",
+        "description": "Every component is meticulously designed and tested for optimal performance."
+      },
+      "innovation": {
+        "title": "Innovative Solutions",
+        "description": "We embrace cutting-edge technologies to push the boundaries of racing."
+      },
+      "teamwork": {
+        "title": "Teamwork & Passion",
+        "description": "Our diverse team collaborates with dedication and a shared love for motorsport."
+      }
+    },
     "achievementsTitle": "Our Achievements",
     "achievementsSubtitle": "Pushing the limits of engineering excellence in competitive racing",
     "coreValuesTitle": "Strategy",

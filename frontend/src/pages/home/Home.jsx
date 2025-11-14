@@ -10,42 +10,42 @@ const Home = () => {
   const achievements = [
     {
       icon: "🏆",
-      title: "Competition Excellence",
-      description: "Multiple podium finishes in Formula Student competitions across Europe.",
+      title: t('home.achievements.competition.title'),
+      description: t('home.achievements.competition.description'),
       value: "1",
-      label: "Award Won"
+      label: t('home.achievements.competition.awardLabel')
     },
     {
       icon: "⚡",
-      title: "Combustion Innovation",
-      description: "Pioneering combustion vehicle technology with cutting-edge battery systems.",
-      value: "0-100",
-      label: "Under 4s"
+      title: t('home.achievements.combustion.title'),
+      description: t('home.achievements.combustion.description'),
+      value: t('home.achievements.combustion.100'),
+      label: t('home.achievements.combustion.100Label')
     },
     {
       icon: "🔧",
-      title: "Engineering Mastery",
-      description: "Custom-designed chassis and aerodynamics optimized for peak performance.",
-      value: "300+",
-      label: "HP Engine"
+      title: t('home.achievements.engineering.title'),
+      description: t('home.achievements.engineering.description'),
+      value: t('home.achievements.engineering.hp'),
+      label: t('home.achievements.engineering.hpLabel')
     },
   ];
 
   const teamValues = [
     {
       icon: "🎯",
-      title: "Precision Engineering",
-      description: "Every component is meticulously designed and tested for optimal performance.",
+      title:  t('home.teamValues.precision.title'),
+      description: t('home.teamValues.precision.description'),
     },
     {
       icon: "🤝",
-      title: "Team Collaboration",
-      description: "Bringing together the brightest minds in automotive engineering.",
+      title: t('home.teamValues.teamwork.title'),
+      description: t('home.teamValues.teamwork.description'),
     },
     {
       icon: "🚀",
-      title: "Innovation First",
-      description: "Pushing boundaries with sustainable racing technology.",
+      title: t('home.teamValues.innovation.title'),
+      description: t('home.teamValues.innovation.description'),
     },
   ];
 

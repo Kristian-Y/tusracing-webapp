@@ -167,7 +167,7 @@ const Contacts = () => {
       name: t('contacts.contactMethods.officeHours'),
       icon: <FaClock />,
       color: "primary",
-      value: "Mon-Fri: 8AM-9PM",
+      value: "Mon-Fri: 8AM - 9PM",
       link: null
     }
   ];

@@ -448,8 +448,8 @@ const Contacts = () => {
             </AnimatedSection>
 
             {/* Social Media Section - Added more spacing */}
-            <div className="mt-8 md:mt-2 bg-base-200 rounded-xl p-6 sm:p-8 shadow-xl">
-              <AnimatedSection direction="up" delay={400}>
+            <AnimatedSection direction="up" delay={400}>
+              <div className="mt-8 md:mt-2 bg-base-200 rounded-xl p-6 sm:p-8 shadow-xl">
                 <div className="flex flex-col items-center text-center mb-8">
                   <h2 id="social-ribbon" className="text-center text-2xl sm:text-3xl font-bold mb-4">
                     {t('contacts.social.title')}
@@ -475,8 +475,8 @@ const Contacts = () => {
                     </a>
                   ))}
                 </div>
-              </AnimatedSection>
-            </div>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </div>
@@ -504,7 +504,7 @@ const Contacts = () => {
       {/* Support CTA */}
       <div className="relative bg-gradient-to-br from-primary to-primary-focus text-primary-content overflow-hidden pt-8">
 
-      {/* Wavy top */}
+        {/* Wavy top */}
         <div className="contact-wave-top z-10">
           <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path

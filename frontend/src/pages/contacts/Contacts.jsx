@@ -151,23 +151,23 @@ const Contacts = () => {
       name: t('contacts.contactMethods.phone'),
       icon: <FaPhone />,
       color: "primary",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      value: "+359 88 835 9546",
+      link: "tel:+359888359546"
     },
     {
       id: 3,
       name: t('contacts.contactMethods.address'),
       icon: <FaMapMarkerAlt />,
       color: "primary",
-      value: "123 Racing Lane, Speed City, SC 12345",
-      link: "https://maps.google.com/?q=123+Racing+Lane,+Speed+City,+SC+12345"
+      value: "Studentski grad, ul. Rosario 1, 1756 Sofia",
+      link: "https://maps.google.com/?q=Studentski+grad,+ul.+Rosario+1,+1756+Sofia"
     },
     {
       id: 4,
       name: t('contacts.contactMethods.officeHours'),
       icon: <FaClock />,
       color: "primary",
-      value: "Mon-Fri: 9AM-6PM",
+      value: "Mon-Fri: 8AM-9PM",
       link: null
     }
   ];
@@ -383,7 +383,7 @@ const Contacts = () => {
 
                     <div className={`form-control transform transition-all duration-300 ${activeField === "message" ? "scale-105" : ""}`}>
                       <label className="label">
-                        <span className="label-text font-medium">Message</span>
+                        <span className="label-text font-medium">{t('contacts.form.message')}</span>
                       </label>
                       <textarea
                         name="message"
@@ -391,7 +391,7 @@ const Contacts = () => {
                         onChange={handleInputChange}
                         onFocus={handleFocus}
                         onBlur={handleBlur}
-                        placeholder="Tell us how we can help you..."
+                        placeholder={t('contacts.form.placeholders.message') || "Tell us how we can help you..."}
                         className={`textarea textarea-bordered h-32 resize-none rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 placeholder:text-base-content/40 ${errors.message ? 'textarea-error border-error' : ''}`}
                         required
                       ></textarea>
@@ -416,7 +416,7 @@ const Contacts = () => {
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold mb-6 flex items-center">
                 <FaHeadset className="mr-3 text-primary" />
-                Get In Touch
+                {t('contacts.badge') }
               </h2>
 
               <div className="bg-base-200 rounded-xl p-6 sm:p-8 shadow-xl">
@@ -424,9 +424,9 @@ const Contacts = () => {
                   <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                     <FaEnvelope className="text-4xl text-primary" />
                   </div>
-                  <h3 className="font-bold text-xl mb-2">Contact Our Team</h3>
+                  <h3 className="font-bold text-xl mb-2">{t('contacts.heroTitle') }</h3>
                   <p className="text-base-content/70 mb-4">
-                    For all inquiries, please reach out to our team email. We'll direct your message to the right person.
+                    {t('contacts.heroDescription') }
                   </p>
 
                   {/* Wrap the link in a div */}
@@ -451,10 +451,10 @@ const Contacts = () => {
           <AnimatedSection direction="up" delay={400}>
             <div className="flex flex-col items-center text-center mb-8">
               <h2 id="social-ribbon" className="text-center text-2xl sm:text-3xl font-bold mb-4">
-                Follow Us on Social Media
+                {t('contacts.social.title') }
               </h2>
               <p className="text-base-content/70 max-w-2xl mx-auto">
-                Stay updated with our latest news, race results, and behind-the-scenes content.
+                {t('contacts.social.description') }
               </p>
             </div>
 
@@ -482,7 +482,7 @@ const Contacts = () => {
       <AnimatedSection direction="up" delay={500}>
         <div className="bg-base-200 py-12 sm:py-16">
           <div className="container mx-auto px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">Find Us</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">{t('contacts.social.find')}</h2>
             <div className="rounded-xl overflow-hidden shadow-xl h-96 sm:h-[500px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11574.844856976933!2d23.344489764056558!3d42.65905770510949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa8426c28853ef%3A0x507b5ee6b85ffd1e!2sBlock%209%20of%20the%20Technical%20University!5e0!3m2!1sen!2sbg!4v1731674014136!5m2!1sen!2sbg"
@@ -508,24 +508,24 @@ const Contacts = () => {
           </div>
           <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center relative z-10">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6">
-              Support Our Racing Team
+              {t('contacts.support.title')}
             </h2>
             <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 max-w-3xl mx-auto text-primary-content/90">
-              Your support helps us build competitive race cars and develop the next generation of engineers. Consider sponsoring our team or making a donation.
+              {t('contacts.support.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/sponsor"
                 className="btn bg-base-100 btn-md sm:btn-lg px-6 sm:px-10 font-bold"
               >
-                Become a Sponsor
+                {t('contacts.support.becomeSponsor')}
               </a>
-              <a
+              {/* <a
                 href="/donate"
                 className="btn btn-md sm:btn-lg px-6 sm:px-10 bg-primary hover:bg-accent/90 text-primary-content"
               >
-                Make a Donation
-              </a>
+                {t('contacts.support.makeDonation')}
+              </a> */}
             </div>
           </div>
         </div>

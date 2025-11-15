@@ -1,59 +1,88 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AnimatedSection from "../animate/AnimatedSection";
+import { useTranslation } from "react-i18next";
+import api from '../../api/axios';
 
-const galleryItems = [
-  {
-    name: "TU Sofia",
-    id: "item1",
-    imageUrl: "https://yt3.googleusercontent.com/ytc/AIdro_kda-9OExpUj3s6cgtwFnkgX2jLpw5AjpQs5IdTItF_bgg=s900-c-k-c0x00ffffff-no-rj",
-    href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
-  },
-  {
-    name: "Bosch",
-    id: "item1",
-    imageUrl: "https://logos-world.net/wp-content/uploads/2020/08/Bosch-Logo.png",
-    href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
-  },
-  {
-    name: "Porsche",
-    id: "item2",
-    imageUrl:
-      "https://di-uploads-pod3.dealerinspire.com/porscheoffremont/uploads/2018/09/porsche-logo.jpg",
-    href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
-  },
-  {
-    name: "Ocean Serenity",
-    id: "item3",
-    imageUrl:
-      "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=320&h=160&fit=crop",
-    href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
-  },
-  {
-    name: "Desert Dunes",
-    id: "item4",
-    imageUrl:
-      "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=320&h=160&fit=crop",
-    href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
-  },
-  {
-    name: "Forest Path",
-    id: "item5",
-    imageUrl:
-      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=320&h=160&fit=crop",
-    href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
-  },
-  {
-    name: "Northern Lights",
-    id: "item6",
-    imageUrl:
-      "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=320&h=160&fit=crop",
-    href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
-  },
-];
+
+// const galleryItems = [
+//   {
+//     name: "TU Sofia",
+//     id: "item1",
+//     imageUrl: "https://yt3.googleusercontent.com/ytc/AIdro_kda-9OExpUj3s6cgtwFnkgX2jLpw5AjpQs5IdTItF_bgg=s900-c-k-c0x00ffffff-no-rj",
+//     href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
+//   },
+//   {
+//     name: "Bosch",
+//     id: "item1",
+//     imageUrl: "https://logos-world.net/wp-content/uploads/2020/08/Bosch-Logo.png",
+//     href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
+//   },
+//   {
+//     name: "Porsche",
+//     id: "item2",
+//     imageUrl:
+//       "https://di-uploads-pod3.dealerinspire.com/porscheoffremont/uploads/2018/09/porsche-logo.jpg",
+//     href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
+//   },
+//   {
+//     name: "Ocean Serenity",
+//     id: "item3",
+//     imageUrl:
+//       "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=320&h=160&fit=crop",
+//     href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
+//   },
+//   {
+//     name: "Desert Dunes",
+//     id: "item4",
+//     imageUrl:
+//       "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=320&h=160&fit=crop",
+//     href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
+//   },
+//   {
+//     name: "Forest Path",
+//     id: "item5",
+//     imageUrl:
+//       "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=320&h=160&fit=crop",
+//     href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
+//   },
+//   {
+//     name: "Northern Lights",
+//     id: "item6",
+//     imageUrl:
+//       "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=320&h=160&fit=crop",
+//     href: "https://en.wikipedia.org/wiki/Sponsor_(commercial)",
+//   },
+// ];
 
 const SponsorCarousel = () => {
+  const { t, i18n } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
-  const scrollItems = [...galleryItems, ...galleryItems];
+  const [sponsors, setSponsors] = useState([]);
+  const scrollItems = [...sponsors, ...sponsors];
+
+  useEffect(() => {
+    const fetchSponsors = async () => {
+      try {
+        const response = await api.get('/sponsors');
+        let fetchedSponsors = [];
+        response.data.forEach(sponsor => {
+            let newSponsor = {
+              name: sponsor.name,
+              id: sponsor.id,
+              imageUrl: sponsor.logo,
+              href: sponsor.link
+            };
+            fetchedSponsors.push(newSponsor);
+        });
+        setSponsors(fetchedSponsors);
+        console.log('Fetched sponsors:', response.data);
+      } catch (error) {
+        console.error('Error fetching sponsors:', error);
+      }
+    };
+
+    fetchSponsors();
+  }, []);
 
   return (
     <>
@@ -65,7 +94,7 @@ const SponsorCarousel = () => {
           {/* Centered title */}
           <AnimatedSection delay={0} direction="up">
             <h2 className="text-3xl font-semibold text-base-content text-center">
-              Featured Sponsors
+              {t("footer-sponsors.title")}
             </h2>
           </AnimatedSection>
 
@@ -76,7 +105,7 @@ const SponsorCarousel = () => {
                 href="/sponsors"
                 className="btn btn-sm rounded-full px-5 bg-primary text-primary-content hover:bg-accent/90 hover:text-accent-content transition-all"
               >
-                Become a Sponsor
+                {t("footer-sponsors.btn")}
               </a>
             </AnimatedSection>
           </div>
@@ -132,7 +161,7 @@ const SponsorCarousel = () => {
               href="/sponsors"
               className="btn rounded-full px-5 bg-primary text-primary-content hover:bg-accent/90 hover:text-accent-content transition-all"
             >
-              Become a Sponsor
+              {t("footer-sponsors.btn")}
             </a>
           </AnimatedSection>
         </div>

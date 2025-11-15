@@ -153,7 +153,8 @@
     "timelineTitle": "Our Timeline",
     "timelineDescription": "Navigate through our history to see key moments and achievements",
     "yearsLabel": "Years",
-    "keyAchievementsTitle": "Key Achievements"
+    "keyAchievementsTitle": "Key Achievements",
+    "comingSoon": "This section will be added soon!"
   },
 
   "team": {
@@ -257,7 +258,18 @@
     "becomeSponsor": "Become a Sponsor",
     "makeDonation": "Make a Donation",
     "followUsTitle": "Follow Us on Social Media",
-    "followUsDescription": "Stay updated with our latest news, race results, and behind-the-scenes content."
+    "followUsDescription": "Stay updated with our latest news, race results, and behind-the-scenes content.",
+    "social": {
+      "title": "Follow Us on Social Media",
+      "description": "Stay updated with our latest news, race results, and behind-the-scenes content.",
+      "find": "Find us"
+    },
+    "support": {
+      "title": "Support Our Racing Team",
+      "description": "Your support helps us build competitive race cars and develop the next generation of engineers. Consider sponsoring our team or making a donation.",
+      "becomeSponsor": "Become a Sponsor",
+      "makeDonation": "Make a Donation"
+    }
   },
 
   "gallery": {
@@ -324,5 +336,10 @@
   "services": {
     "title": "Our Services",
     "description": "Discover the services offered by FS Team."
+  },
+
+  "footer-sponsors": {
+    "title": "Our Sponsors",
+    "btn": "Become a Sponsor"
   }
 }

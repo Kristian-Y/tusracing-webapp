@@ -324,7 +324,7 @@ const Team = () => {
     <div className="min-h-screen flex items-center justify-center bg-base-100 px-4">
       <AnimatedSection direction="up" delay={100}>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-          {t('team.comingSoon', 'This section will be added soon!')}
+          {t('history.comingSoon', 'This section will be added soon!')}
         </h1>
       </AnimatedSection>
     </div>

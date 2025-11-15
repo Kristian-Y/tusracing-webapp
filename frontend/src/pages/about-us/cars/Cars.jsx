@@ -14,88 +14,45 @@ const Cars = () => {
   const carsData = [
     {
       id: 1,
-      name: "McLaren MCL39",
-      year: 2025,
-      image: "https://mclaren.bloomreach.io/delivery/resources/content/gallery/mclaren-racing/formula-1/2025/nsr/f1-75-live-m/web/mcl39-cover-image.jpg",
-      engine: "Mercedes-AMG F1 M14E Performance",
-      engineType: "Hybrid (Turbocharged V6 + ERS)",
+      name: "TUSRT - 2",
+      year: 2022,
+      image: "https://res.cloudinary.com/dfs1ak9qn/image/upload/v1762292717/gvpshfmfnnct3mlxwezb.jpg",
+      engine: "KTM 690cc LC4",
+      engineType: "Combustion",
       displacement: "1.6 L",
-      cylinders: "6 (V6)",
-      power: "1050 HP",
-      torque: "900 Nm ",
-      weight: "798 kg",
-      acceleration: "0–100 km/h in 2.6 s",
-      topSpeed: "355 km/h",
-      fuelSystem: "Direct Fuel Injection (100 kg/h fuel flow limit)",
-      transmission: "8-speed sequential semi-automatic with reverse",
-      chassis: "Carbon fiber composite monocoque",
-      aerodynamics: "Ground-effect floor, active DRS rear wing, complex front wing and sidepod design",
+      cylinders: "1",
+      power: "46kW @ 7,000 rpm",
+      torque: "69 Nm @ 6,000 rpm",
+      weight: "240 kg",
+      acceleration: "0–100 km/h in 3.5 s",
+      topSpeed: "180 km/h",
+      transmission: "6-speed sequential semi-automatic with reverse",
+      chassis: "Space Frame",
+      aerodynamics: "Ground-effect floor",
       achievements: "Multiple podium finishes in 2025 Formula One season (Lando Norris & Oscar Piastri)",
       innovations: "Refined ground-effect aero, hybrid energy recovery (MGU-K & MGU-H), advanced cooling package"
     },
     {
       id: 2,
-      name: "Red Bull RB21",
-      year: 2025,
-      image: "https://images.ps-aws.com/c?url=https%3A%2F%2Fd3cm515ijfiu6w.cloudfront.net%2Fwp-content%2Fuploads%2F2024%2F09%2F13192030%2Fsergio-perez-baku-2024-red-bull-planetf1-1320x742.jpg",
-      engine: "Honda RBPTH003",
-      engineType: "Hybrid (Turbocharged V6 + ERS)",
-      displacement: "1.6 L",
-      cylinders: "6 (V6)",
-      power: "1020 HP",
+      name: "TUSRT - 1",
+      year: 2016,
+      image: "https://res.cloudinary.com/dfs1ak9qn/image/upload/v1763164102/D4SC08161_zoyoeh.jpg",
+      engine: "Honda CBR 600",
+      engineType: "Combustion",
+      displacement: "600cc",
+      cylinders: "4",
+      power: "120 HP",
       torque: "—",
-      weight: "800 kg",
-      acceleration: "0–100 km/h in 2.6 s",
-      topSpeed: "360 km/h",
+      weight: "400 kg",
+      acceleration: "0–100 km/h in 4 s",
+      topSpeed: "- km/h",
       fuelSystem: "Direct Fuel Injection",
-      transmission: "8‑speed sequential semi‑automatic + reverse",
-      chassis: "Carbon fiber monocoque",
-      aerodynamics: "Ground‑effect floor, DRS rear wing, evolved cooling & sidepod design",
+      transmission: "6 ‑ manual + reverse",
+      chassis: "Space Frame",
+      aerodynamics: "Ground‑effect floor",
       achievements: "Multiple wins & podiums in 2025 season",
       innovations: "New aerodynamic upgrades, improved cooling, evolution of RB20 platform"
     },
-    {
-      id: 3,
-      name: "Nitro Racer",
-      year: 2021,
-      image: "https://picsum.photos/seed/formula3/800/600.jpg",
-      engine: "Yamaha YZF-R6",
-      engineType: "Combustion",
-      displacement: "599cc",
-      cylinders: "4",
-      power: "95 HP",
-      torque: "61 Nm",
-      weight: "205 kg",
-      acceleration: "0-100 km/h in 3.0s",
-      topSpeed: "145 km/h",
-      fuelSystem: "Electronic Fuel Injection",
-      transmission: "Sequential 6-speed",
-      chassis: "Aluminum honeycomb",
-      aerodynamics: "Adjustable diffuser",
-      achievements: "Best Design Award - Formula Student UK 2021",
-      innovations: "Telemetry system, adjustable suspension"
-    },
-    {
-      id: 4,
-      name: "Phoenix R",
-      year: 2020,
-      image: "https://picsum.photos/seed/formula4/800/600.jpg",
-      engine: "Suzuki GSX-R600",
-      engineType: "Combustion",
-      displacement: "599cc",
-      cylinders: "4",
-      power: "85 HP",
-      torque: "60 Nm",
-      weight: "215 kg",
-      acceleration: "0-100 km/h in 3.3s",
-      topSpeed: "135 km/h",
-      fuelSystem: "Electronic Fuel Injection",
-      transmission: "Sequential 6-speed",
-      chassis: "Carbon fiber monocoque",
-      aerodynamics: "Multi-element wings",
-      achievements: "3rd Place - Formula Student Austria 2020",
-      innovations: "Hybrid power system, active safety features"
-    }
   ];
 
   return (
@@ -218,28 +175,26 @@ const Cars = () => {
                       <p><GiRaceCar className="inline text-orange-400 mr-2" /><span className="font-bold">Cylinders:</span> {car.cylinders}</p>
                       <p><FaGasPump className="inline text-accent mr-2" /><span className="font-bold">Displacement:</span> {car.displacement}</p>
                       <p><BsSpeedometer2 className="inline text-rose-400 mr-2" /><span className="font-bold">Torque:</span> {car.torque}</p>
-                      <p><BsFuelPump className="inline text-success mr-2" /><span className="font-bold">Fuel System:</span> {car.fuelSystem}</p>
                       <p><FaCogs className="inline text-warning mr-2" /><span className="font-bold">Transmission:</span> {car.transmission}</p>
                       <p><GiCarWheel className="inline text-error mr-2" /><span className="font-bold">Chassis:</span> {car.chassis}</p>
                       <p><GiSteeringWheel className="inline text-cyan-400 mr-2" /><span className="font-bold">Aerodynamics:</span> {car.aerodynamics}</p>
-                      <p><FaTrophy className="inline text-amber-400 mr-2" /><span className="font-bold">Innovations:</span> {car.innovations}</p>
                     </div>
 
                   </div>
 
 
                   {/* Achievements and Innovations */}
-                  <div className="divider"></div>
+                  {/* <div className="divider"></div>
                   <div className="mb-4">
                     <div className="flex items-center mb-2">
-                      <FaTrophy className="text-accent mr-2 text-lg" /> {/* Increased size */}
+                      <FaTrophy className="text-accent mr-2 text-lg" /> 
                       <div>
                         <p className="text-xs text-base-content/70">{t('cars.achievementLabel')}</p>
                         <p className="font-semibold text-sm">{car.achievements}</p>
                       </div>
                     </div>
 
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </AnimatedSection>

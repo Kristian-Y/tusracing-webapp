@@ -62,57 +62,67 @@ const Home = () => {
     },
   ];
 
-  const TeamStrategyCard = (value, index) => {
-    return <AnimatedSection key={value.title} delay={index * 150}>
-      <div className="text-center group">
-        <div className="relative inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 mb-4 sm:mb-6">
-          <div className="absolute inset-0 bg-primary rounded-full opacity-20 group-hover:scale-125 transition-transform duration-500"></div>
-          <div className="relative bg-gradient-to-br from-primary to-primary-focus rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center text-primary-content text-3xl sm:text-4xl shadow-lg group-hover:rotate-12 transition-transform duration-300">
-            {value.icon}
+  const TeamStrategyCard = ({ value, index }) => {
+    return (
+      <AnimatedSection key={value.title} delay={index * 150}>
+        <div className="text-center group">
+          <div className="relative inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 mb-4 sm:mb-6">
+            <div className="absolute inset-0 bg-primary rounded-full opacity-20 group-hover:scale-125 transition-transform duration-500"></div>
+            <div className="relative bg-gradient-to-br from-primary to-primary-focus rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center text-primary-content text-3xl sm:text-4xl shadow-lg group-hover:rotate-12 transition-transform duration-300">
+              {value.icon}
+            </div>
+          </div>
+          <h3 className="text-xl sm:text-2xl font-bold mb-3">{value.title}</h3>
+          <p className="text-sm sm:text-base text-base-content/70 leading-relaxed">
+            {value.description}
+          </p>
+        </div>
+      </AnimatedSection>
+    );
+  };
+
+  const AchievementCard = ({ achievement, index }) => {
+    return (
+      <AnimatedSection key={achievement.title} delay={index * 150}>
+        <div className="group relative bg-gradient-to-br from-base-200 to-base-300 rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col h-full">
+          {/* Decorative circle */}
+          <div className="absolute top-0 right-0 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 bg-primary/10 rounded-full -mr-10 -mt-10 sm:-mr-12 sm:-mt-12 md:-mr-16 md:-mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+
+          <div className="relative z-10 flex flex-col flex-1">
+            {/* Icon */}
+            <div className="text-3xl sm:text-4xl md:text-6xl mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+              {achievement.icon}
+            </div>
+
+            {/* Title */}
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3">{achievement.title}</h3>
+
+            {/* Description */}
+            <p className="text-xs sm:text-sm md:text-base text-base-content/70 mb-3 flex-1">{achievement.description}</p>
+
+            {/* Value */}
+            <div className="flex flex-row items-baseline justify-start gap-2 mt-auto">
+              <span className="text-xl sm:text-2xl md:text-2xl font-black text-primary">{achievement.value}</span>
+              <span className="text-[10px] sm:text-xs md:text-sm uppercase tracking-wider text-base-content/60">{achievement.label}</span>
+            </div>
           </div>
         </div>
-        <h3 className="text-xl sm:text-2xl font-bold mb-3">{value.title}</h3>
-        <p className="text-sm sm:text-base text-base-content/70 leading-relaxed">{value.description}</p>
-      </div>
-    </AnimatedSection>;
-  }
+      </AnimatedSection>
+    );
+  };
 
-  const AchievementCard = (achievement, index) => {
-    return <AnimatedSection key={achievement.title} delay={index * 150}>
-      <div className="group relative bg-gradient-to-br from-base-200 to-base-300 rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col h-full">
-        {/* Decorative circle */}
-        <div className="absolute top-0 right-0 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 bg-primary/10 rounded-full -mr-10 -mt-10 sm:-mr-12 sm:-mt-12 md:-mr-16 md:-mt-16 group-hover:scale-150 transition-transform duration-700"></div>
 
-        <div className="relative z-10 flex flex-col flex-1">
-          {/* Icon */}
-          <div className="text-3xl sm:text-4xl md:text-6xl mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-            {achievement.icon}
-          </div>
-
-          {/* Title */}
-          <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3">{achievement.title}</h3>
-
-          {/* Description */}
-          <p className="text-xs sm:text-sm md:text-base text-base-content/70 mb-3 flex-1">{achievement.description}</p>
-
-          {/* Value */}
-          <div className="flex flex-row items-baseline justify-start gap-2 mt-auto">
-            <span className="text-xl sm:text-2xl md:text-2xl font-black text-primary">{achievement.value}</span>
-            <span className="text-[10px] sm:text-xs md:text-sm uppercase tracking-wider text-base-content/60">{achievement.label}</span>
-          </div>
+  const StatBarContent = ({ stat, index }) => {
+    return (
+      <AnimatedSection key={index} delay={index * 100} direction="up">
+        <div>
+          <div className="text-2xl sm:text-3xl md:text-4xl font-black">{stat.value}</div>
+          <div className="text-xs sm:text-sm uppercase tracking-wider opacity-90">{stat.label}</div>
         </div>
-      </div>
-    </AnimatedSection>;
-  }
+      </AnimatedSection>
+    );
+  };
 
-  const StatBarContent = (index, stat) => {
-    return <AnimatedSection key={index} delay={index * 100} direction="up">
-      <div>
-        <div className="text-2xl sm:text-3xl md:text-4xl font-black">{stat.value}</div>
-        <div className="text-xs sm:text-sm uppercase tracking-wider opacity-90">{stat.label}</div>
-      </div>
-    </AnimatedSection>;
-  }
 
   return (
     <div className="bg-base-100 text-base-content overflow-x-hidden">
@@ -195,7 +205,7 @@ const Home = () => {
               { value: "5+", label: t('home.stats.competitions') },
               { value: "3+", label: t('home.stats.continents') }
             ].map((stat, index) => (
-              StatBarContent(index, stat)
+              <StatBarContent key={index} stat={stat} index={index} />
             ))}
           </div>
         </div>
@@ -214,7 +224,7 @@ const Home = () => {
         </AnimatedSection>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {achievements.map((achievement, index) => (
-            AchievementCard(achievement, index)
+            <AchievementCard key={achievement.title} achievement={achievement} index={index} />
           ))}
         </div>
       </div>
@@ -233,7 +243,7 @@ const Home = () => {
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
             {teamValues.map((value, index) => (
-              TeamStrategyCard(value, index)
+              <TeamStrategyCard key={value.title} value={value} index={index} />
             ))}
           </div>
         </div>

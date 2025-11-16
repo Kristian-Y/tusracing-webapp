@@ -14,70 +14,74 @@ const About = () => {
     { id: 4, key: 'joinUs', image: "/images/cars/join-team.jpg", icon: "/images/icons/about-us/application.png", color: 'accent', link: "/about/join-us" },
   ];
 
-  const AboutSectionCard = (card, index) => {
-    return <AnimatedSection key={card.id} direction="up" delay={200 + index * 100}>
-      <div className="group relative h-full bg-base-200 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl">
-        {/* Image Container */}
-        <div className="relative h-64 overflow-hidden">
-          <img
-            src={card.image}
-            alt={t(`about.cards.${card.key}.title`)}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+  const AboutSectionCard = ({ card, index, t }) => {
+    return (
+      <AnimatedSection key={card.id} direction="up" delay={200 + index * 100}>
+        <div className="group relative h-full bg-base-200 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl">
+          {/* Image Container */}
+          <div className="relative h-64 overflow-hidden">
+            <img
+              src={card.image}
+              alt={t(`about.cards.${card.key}.title`)}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
 
-          {/* Icon */}
-          <div
-            className={`absolute top-6 left-6 bg-${card.color}/90 backdrop-blur-xl p-3 rounded-xl shadow-lg`}
-          >
-            <img src={card.icon} alt={card.title} className="w-8 h-8" />
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-8">
-          <h3 className="text-2xl font-bold mb-3 text-base-content">
-            {t(`about.cards.${card.key}.title`)}
-          </h3>
-          <div className={`w-20 h-1 bg-${card.color} mb-4 rounded-full`}></div>
-          <p className="text-base-content/70 leading-relaxed mb-6">
-            {t(`about.cards.${card.key}.description`)}
-          </p>
-
-          {/* CTA Button */}
-          <div className="flex items-center justify-between">
-            <a
-              href={card.link}
-              className={`inline-flex items-center gap-2 text-${card.color} font-semibold hover:gap-3 transition-all duration-300`}
-            >
-              <span>{t(`about.cards.${card.key}.cta`)}</span>
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-
-            {/* Decorative Element */}
+            {/* Icon */}
             <div
-              className={`w-12 h-12 bg-${card.color}/10 rounded-full flex items-center justify-center group-hover:bg-${card.color}/20 transition-colors duration-300`}
+              className={`absolute top-6 left-6 bg-${card.color}/90 backdrop-blur-xl p-3 rounded-xl shadow-lg`}
             >
-              <div className={`w-6 h-6 bg-${card.color} rounded-full`}></div>
+              <img src={card.icon} alt={card.title} className="w-8 h-8" />
             </div>
           </div>
-        </div>
 
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-      </div>
-    </AnimatedSection>;
-  }
+          {/* Content */}
+          <div className="p-8">
+            <h3 className="text-2xl font-bold mb-3 text-base-content">
+              {t(`about.cards.${card.key}.title`)}
+            </h3>
+            <div className={`w-20 h-1 bg-${card.color} mb-4 rounded-full`}></div>
+            <p className="text-base-content/70 leading-relaxed mb-6">
+              {t(`about.cards.${card.key}.description`)}
+            </p>
+
+            {/* CTA Button */}
+            <div className="flex items-center justify-between">
+              <a
+                href={card.link}
+                className={`inline-flex items-center gap-2 text-${card.color} font-semibold hover:gap-3 transition-all duration-300`}
+              >
+                <span>{t(`about.cards.${card.key}.cta`)}</span>
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+
+              {/* Decorative Element */}
+              <div
+                className={`w-12 h-12 bg-${card.color}/10 rounded-full flex items-center justify-center group-hover:bg-${card.color}/20 transition-colors duration-300`}
+              >
+                <div className={`w-6 h-6 bg-${card.color} rounded-full`}></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Hover Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        </div>
+      </AnimatedSection>
+    );
+  };
 
   return (
     <div className="min-h-[100vh] pt-8 bg-base-100">
@@ -110,7 +114,7 @@ const About = () => {
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {aboutCards.map((card, index) => (
-            AboutSectionCard(card, index)
+            <AboutSectionCard key={card.id} card={card} index={index} t={t} />
           ))}
         </div>
       </div>

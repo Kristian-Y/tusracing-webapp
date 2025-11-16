@@ -190,39 +190,64 @@ const Contacts = () => {
     }
   ];
 
-  const SocialMediaContent = (social) => {
-    return <a
-      key={social.id}
-      href={social.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative"
-    >
-      <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${social.gradient} rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform`}>
-        <div className="text-2xl sm:text-3xl">{social.icon}</div>
-      </div>
-      <p className="text-center mt-2 text-sm font-medium">{social.name}</p>
-    </a>;
-  }
-
-  const ContactMethodsContent = (method, index) => {
-    return <AnimatedSection key={method.id} direction="up" delay={100 + index * 100}>
-      <div>
-        <a
-          href={method.link || '#'}
-          className="block group transform transition-all duration-300 hover:scale-105"
-          target={method.link && method.link.startsWith('http') ? '_blank' : '_self'}
-          rel={method.link && method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+  const SocialMediaContent = ({ social }) => {
+    return (
+      <a
+        href={social.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative"
+      >
+        <div
+          className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${social.gradient} rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform`}
         >
-          <div className="flex flex-col items-center">
-            <div className="text-2xl sm:text-3xl mb-2 text-primary-content transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">{method.icon}</div>
-            <div className="text-xs sm:text-sm uppercase tracking-wider opacity-90 mb-1">{method.name}</div>
-            <div className="text-sm font-medium break-all">{method.value}</div>
-          </div>
-        </a>
-      </div>
-    </AnimatedSection>;
-  }
+          <div className="text-2xl sm:text-3xl">{social.icon}</div>
+        </div>
+        <p className="text-center mt-2 text-sm font-medium">
+          {social.name}
+        </p>
+      </a>
+    );
+  };
+
+  const ContactMethodsContent = ({ method, index }) => {
+    return (
+      <AnimatedSection
+        key={method.id}
+        direction="up"
+        delay={100 + index * 100}
+      >
+        <div>
+          <a
+            href={method.link || '#'}
+            className="block group transform transition-all duration-300 hover:scale-105"
+            target={
+              method.link && method.link.startsWith('http')
+                ? '_blank'
+                : '_self'
+            }
+            rel={
+              method.link && method.link.startsWith('http')
+                ? 'noopener noreferrer'
+                : undefined
+            }
+          >
+            <div className="flex flex-col items-center">
+              <div className="text-2xl sm:text-3xl mb-2 text-primary-content transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                {method.icon}
+              </div>
+              <div className="text-xs sm:text-sm uppercase tracking-wider opacity-90 mb-1">
+                {method.name}
+              </div>
+              <div className="text-sm font-medium break-all">
+                {method.value}
+              </div>
+            </div>
+          </a>
+        </div>
+      </AnimatedSection>
+    );
+  };
 
   return (
     <div className="min-h-[100vh] pt-8 bg-base-100 relative overflow-hidden">
@@ -258,8 +283,8 @@ const Contacts = () => {
       <div className="bg-gradient-to-r from-primary to-accent text-primary-content py-6 sm:py-8">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
-            {contactMethods.map((method, index) => (
-              ContactMethodsContent(method, index)
+            {contactMethods.map((method, i) => (
+              <ContactMethodsContent method={method} index={i} />
             ))}
           </div>
         </div>
@@ -449,8 +474,8 @@ const Contacts = () => {
                 </div>
 
                 <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                  {socialMedia.map((social) => (
-                    SocialMediaContent(social)
+                  {socialMedia.map((item) => (
+                    <SocialMediaContent social={item} />
                   ))}
                 </div>
               </div>

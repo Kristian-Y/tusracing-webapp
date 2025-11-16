@@ -505,7 +505,7 @@ const Contacts = () => {
       </AnimatedSection>
 
       {/* Support CTA */}
-      <div className="relative bg-gradient-to-br from-primary to-primary-focus text-primary-content overflow-hidden pt-8">
+      <div className="relative bg-gradient-to-br from-primary to-primary-focus text-primary-content overflow-hidden pt-14">
 
         {/* Wavy top */}
         <div className="contact-wave-top z-10">

@@ -287,7 +287,7 @@ const Home = () => {
       </div> */}
 
       {/* Final CTA Section */}
-      <div className="relative bg-gradient-to-br from-primary to-primary-focus text-primary-content overflow-hidden pt-8">
+      <div className="relative bg-gradient-to-br from-primary to-primary-focus text-primary-content overflow-hidden pt-14">
         {/* Single wave cutout at the top */}
         <div className="home-wave-top">
           <svg viewBox="0 0 1200 120" preserveAspectRatio="none">

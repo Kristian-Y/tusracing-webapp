@@ -120,12 +120,12 @@ const About = () => {
       </div>
 
       {/* ================= CTA SECTION ================= */}
-      <div className="mx-auto px-0 pt-28 pb-12 relative bg-gradient-to-br from-accent to-primaty-content text-primary-content overflow-hidden">
+      <div className="mx-auto px-0 pt-40 pb-16 relative bg-gradient-to-br from-accent to-primaty-content text-primary-content overflow-hidden">
         {/* Wavy top */}
         <div className="about-wave-top">
           <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path
-              d="M0,60 C150,10 350,110 500,60 C650,10 850,110 1000,60 C1150,10 1200,40 1200,60 L1200,0 L0,0 Z"
+              d="M0,60 C180,15 320,105 500,60 C620,15 780,115 980,60 C1120,15 1180,45 1200,60 L1200,0 L0,0 Z"
               fill="currentColor"
               stroke="none"
             ></path>

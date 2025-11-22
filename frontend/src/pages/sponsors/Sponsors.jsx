@@ -160,8 +160,6 @@ const Sponsors = () => {
 
 
 
-
-
   // const sponsorTiers = [
   //   { id: "title", name: "Title Sponsor", icon: <FaCrown />, color: "primary", description: "Our premier partners who drive our success", sponsors: [{ name: "SpeedTech Motors", logo: "https://picsum.photos/seed/speedtech/200/100.jpg" }, { name: "Racing Dynamics", logo: "https://picsum.photos/seed/racingdyn/200/100.jpg" }] },
   //   { id: "gold", name: "Gold Sponsor", icon: <FaTrophy />, color: "warning", description: "Major contributors to our racing excellence", sponsors: [{ name: "AutoParts Pro", logo: "https://picsum.photos/seed/autoparts/200/100.jpg" }, { name: "TurboTech", logo: "https://picsum.photos/seed/turbotec/200/100.jpg" }, { name: "RaceFuel Plus", logo: "https://picsum.photos/seed/racefuel/200/100.jpg" }] },

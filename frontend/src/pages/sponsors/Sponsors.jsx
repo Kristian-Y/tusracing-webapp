@@ -9,6 +9,7 @@ import AnimatedSection from "../../components/animate/AnimatedSection";
 import toast, { Toaster } from 'react-hot-toast';
 import api from '../../api/axios';
 import "./Sponsors.css"
+import axios from 'axios';
 
 const getTierTranslations = (t) => [
   { id: "title", name: t('sponsors.tiers.title.name'), icon: <FaCrown />, color: "primary", description: t('sponsors.tiers.title.description'), sponsors: [] },
@@ -116,11 +117,20 @@ const Sponsors = () => {
   const handleFocus = (e) => setActiveField(e.target.name);
   const handleBlur = () => setActiveField("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       setIsSubmitting(true);
-      setTimeout(() => {
+      try { 
+        const responnse = await api.post("forms/sponsor-applications/", {
+          company_name: formData.companyName,
+          contact_person_names: formData.contactPersonnames,
+          email: formData.email,
+          phone: formData.phone,
+          description: formData.description,
+          tier: formData.tier,
+        })
+        setTimeout(() => {
         setIsSubmitting(false);
         setShowSuccess(true);
         toast.success(t('sponsors.form.successMessage'), {
@@ -134,8 +144,12 @@ const Sponsors = () => {
         setTimeout(() => {
           setFormData({ companyName: "", contactPersonnames: "", email: "", description: "", phone: "", tier: "" });
           setShowSuccess(false);
-        }, 5000);
-      }, 2000);
+          }, 5000);
+        }, 2000);
+      } catch (err) {
+        console.log(err.response.data)
+      }
+      
     }
   };
 
@@ -366,7 +380,7 @@ const Sponsors = () => {
                           <select name="tier" value={formData.tier} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur}
                             className={`select select-bordered w-full rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 ${errors.tier ? 'select-error border-error' : ''}`}>
                             <option value="" disabled>{t('sponsors.form.selectTierPlaceholder')}</option>
-                            {sponsorTiers.map((tier) => <option key={tier.id} value={tier.name}>{tier.name}</option>)}
+                            {sponsorTiers.map((tier) => <option key={tier.id} value={tier.id}>{tier.name}</option>)}
                           </select>
                           {errors.tier && (
                             <span className={`text-sm mt-1 ${theme === 'darkTheme' ? 'text-red-400' : 'text-error'}`}>{errors.tier}</span>

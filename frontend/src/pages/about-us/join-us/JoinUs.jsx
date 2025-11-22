@@ -4,6 +4,8 @@ import { useTheme } from "../../../theme-manager/ThemeContext";
 import AnimatedSection from "../../../components/animate/AnimatedSection";
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+import api from '../../../api/axios';
+
 
 const JoinUs = () => {
   const { theme } = useTheme();
@@ -143,14 +145,28 @@ const JoinUs = () => {
     setActiveField("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
       setIsSubmitting(true);
       
-      // Simulate API call
-      setTimeout(() => {
+      // API call
+      try {
+        const responnse = await api.post("forms/join-applications/", {
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          university: formData.university,
+          major: formData.major,
+          graduation: formData.graduation,
+          course: formData.course,
+          semester: formData.semester,
+          skills: formData.skills,
+          motivation: formData.motivation,
+          portfolio_link: formData.portfolioLink
+        })
         setIsSubmitting(false);
         setShowSuccess(true);
         
@@ -181,8 +197,10 @@ const JoinUs = () => {
             portfolioLink: "",
           });
           setShowSuccess(false);
-        }, 5000);
-      }, 2000);
+        })
+      } catch(err) {
+        console.log(err)
+      }
     }
   };
 

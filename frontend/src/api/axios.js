@@ -4,7 +4,7 @@ import axios from 'axios';
 // Base URL can be configured via REACT_APP_API_URL in .env (e.g. REACT_APP_API_URL=http://localhost:5000/api)
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:8000/api',
-  withCredentials: false, // include cookies if your backend uses them
+  withCredentials: true, // include cookies if your backend uses them
   headers: {
     'Content-Type': 'application/json',
   },

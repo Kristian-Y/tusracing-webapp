@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import AnimatedSection from "../../components/animate/AnimatedSection";
 import toast, { Toaster } from 'react-hot-toast';
 import "./Contacts.css"
+import api from '../../api/axios';
 
 const Contacts = () => {
   const { theme } = useTheme();
@@ -89,14 +90,15 @@ const Contacts = () => {
     setActiveField("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
       setIsSubmitting(true);
 
-      // Simulate API call
-      setTimeout(() => {
+      // API call
+      try {
+        const response = await api.post("forms/contact/", formData)
         setIsSubmitting(false);
         setShowSuccess(true);
 
@@ -119,8 +121,10 @@ const Contacts = () => {
             message: ''
           });
           setShowSuccess(false);
-        }, 5000);
-      }, 2000);
+        })
+      } catch(err){
+        console.log(err)
+      }
     }
   };
 

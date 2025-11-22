@@ -192,7 +192,7 @@ const Sponsors = () => {
             {tier.sponsors.map((sponsor) => (
               <a href={sponsor.link} target="_blank" rel="noreferrer">
                 <div key={sponsor.name} className="group bg-base-200 rounded-xl p-4 hover:bg-base-300 transition-all duration-300">
-                  <div className="aspect-video bg-white rounded-lg overflow-hidden mb-3">
+                  <div className={"aspect-video rounded-lg overflow-hidden mb-3 " + (theme === 'darkTheme' ? 'bg-neutral' : 'bg-gray-400')}>
                     <img src={sponsor.logo} alt={sponsor.name} className="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300" />
                   </div>
                   <p className="text-center text-sm font-medium text-base-content/80 group-hover:text-primary transition-colors">

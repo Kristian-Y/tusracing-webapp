@@ -12,7 +12,7 @@ import "./Sponsors.css"
 import axios from 'axios';
 
 const getTierTranslations = (t) => [
-  { id: "title", name: t('sponsors.tiers.title.name'), icon: <FaCrown />, color: "primary", description: t('sponsors.tiers.title.description'), sponsors: [] },
+  { id: "platinum", name: t('sponsors.tiers.title.name'), icon: <FaCrown />, color: "primary", description: t('sponsors.tiers.title.description'), sponsors: [] },
   { id: "gold", name: t('sponsors.tiers.gold.name'), icon: <FaTrophy />, color: "warning", description: t('sponsors.tiers.gold.description'), sponsors: [] },
   { id: "bronze", name: t('sponsors.tiers.bronze.name'), icon: <FaGem />, color: "accent", description: t('sponsors.tiers.bronze.description'), sponsors: [] }
 ];

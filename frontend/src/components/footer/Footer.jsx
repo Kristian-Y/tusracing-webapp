@@ -117,8 +117,8 @@ const Footer = () => {
       {/* Phone */}
       <div className="flex items-center justify-center gap-3">
         <FaPhone className="text-primary text-lg sm:text-xl flex-shrink-0" />
-        <a href="tel:+35912345678" className="link link-hover text-center">
-          +359 123 456 78
+        <a href="tel:++359 88 835 9546" className="link link-hover text-center">
+          +359 88 835 9546
         </a>
       </div>
     </div>
